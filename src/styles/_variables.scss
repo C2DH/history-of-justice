@@ -1,0 +1,13 @@
+// Override variables:
+// https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+// following doc
+// https://getbootstrap.com/docs/4.5/getting-started/theming/
+$theme-colors: (
+  'primary': #9b5de5,
+  'secondary': #222322,
+  'gray': #ececec,
+  'accent': #9b5de5,
+);
+
+$font-size-base: 1.2rem;
+$line-height-base: 1.75;

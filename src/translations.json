@@ -1,0 +1,24 @@
+{
+  "en-GB": {
+    "translation": {
+      "asNumber": "{{ n,2 }}",
+      "navigationAbout": "About",
+      "navigationHome": "/",
+      "navigationTermsOfUse": "Terms of use",
+      "pagesHomeTitle": "History of Justice (en)",
+      "pagesHomeSubheading": "",
+      "pagesNotFoundTitle": "Not Found"
+    }
+  },
+  "fr-FR": {
+    "translation": {
+      "asNumber": "{{ n,2 }}",
+      "navigationAbout": "About",
+      "navigationHome": "/",
+      "navigationTermsOfUse": "Terms of use",
+      "pagesHomeTitle": "History of Justice (fr)",
+      "pagesHomeSubheading": "",
+      "pagesNotFoundTitle": "Not Found"
+    }
+  }
+}
