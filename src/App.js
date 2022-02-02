@@ -1,17 +1,15 @@
-import { BrowserRouter } from 'react-router-dom'
-import AppRoutes from './routes'
-import Footer from './components/Footer'
-import { initializeI18next } from './logic/language'
+import AppRoutes from './AppRoutes';
+import { BrowserRouter } from "react-router-dom"
 
-const { languageCode } = initializeI18next()
+import { WithLanguage } from './logic/language';
 
-const App = () => {
-  return (
-    <BrowserRouter>
-    <AppRoutes startLanguageCode={languageCode}/>
-    <Footer />
-    </BrowserRouter>
-  );
-}
+
+const App = _ => (
+  <BrowserRouter>
+    <WithLanguage>
+      <AppRoutes />
+    </WithLanguage>
+  </BrowserRouter>
+);
 
 export default App;

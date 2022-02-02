@@ -1,32 +1,34 @@
+import React, { useState, useContext, useEffect } from 'react';
 import i18n from 'i18next'
 import moment from 'moment'
-import intersection from 'lodash/intersection'
+import intersection from 'lodash/intersection';
 import { initReactI18next, useTranslation } from 'react-i18next'
-import { matchPath } from 'react-router'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import translations from '../translations'
 import {
-  Languages, LanguageCodes, LanguageRoutePattern,
+  Languages,
+  LanguageCodes,
   DefaultLanguageCode
 } from '../constants'
 
 
-const getLanguage = () => {
-  const langMatch = matchPath(window.location.pathname, {
-    path: LanguageRoutePattern,
-    exact: false,
-    strict: false,
-  })
-  let startLangShort = langMatch?.params?.lang
+const getStartLanguage = pathname => {
+
+  let startLangShort = pathname.split('/')[1];
+
   if (!startLangShort || !LanguageCodes.includes(startLangShort)) {
+
     // get default short language from browser
-    const browserLangsShort = window.navigator?.languages ?? []
-    console.info('browser languages detected:', browserLangsShort)
-    const availablesLangsShort = intersection(browserLangsShort, LanguageCodes)
+    const browserLangsShort     = window.navigator?.languages ?? [];
+    const availablesLangsShort  = intersection(browserLangsShort, LanguageCodes);
+
+    console.info('browser languages detected:', browserLangsShort);
+
     startLangShort = availablesLangsShort.length > 0
       ? availablesLangsShort[0]
       : DefaultLanguageCode
   }
+
   return {
     languageCode: startLangShort,
     language: Languages.find(l => l.indexOf(startLangShort) === 0)
@@ -34,9 +36,12 @@ const getLanguage = () => {
 }
 
 
-const initializeI18next = () => {
-  const { languageCode, language } = getLanguage()
+const initializeI18next = pathname => {
+
+  const { languageCode, language } = getStartLanguage(pathname)
+
   console.info('start language:', languageCode, language)
+
   i18n
     .use(initReactI18next) // passes i18n down to react-i18next
     .init({
@@ -57,41 +62,65 @@ const initializeI18next = () => {
             return value;
         }
       }
-    })
-  return { languageCode, language }
+    });
+
+  return { languageCode, language };
 }
 
 
-function namespacePath(path, lang) {
-  let pathWithLang = `/${lang}`
-  if (path[0] === '/') {
-    pathWithLang += path
-  } else {
-    pathWithLang += `/${path}`
-  }
-  return pathWithLang
-}
+const LanguageContext = React.createContext();
 
-const useToWithLang = (to) => {
-  const { i18n } = useTranslation()
-  let { lang } = useParams()
-  if (!lang) {
-    // NOTE: Workaround when no lang in current path
-    // fallback to current i81n language ...
-    lang = i18n.language.split('-')[0]
-  }
+const WithLanguage = ({ children }) => {
 
-  if (typeof to === 'string') {
-    return namespacePath(to, lang)
-  } else {
-    return {
-      ...to,
-      pathname: namespacePath(to.pathname, lang),
+  const { pathname }          = useLocation();
+  const [lang, setLanguage]   = useState(_ => initializeI18next(pathname).languageCode);
+  const [mlPaths, setMLPaths] = useState();
+  const { i18n }              = useTranslation();
+
+  useEffect(_ => {
+    const lang = pathname.split('/')[1];
+
+    if(lang && LanguageCodes.includes(lang)) {
+
+      //  Build paths for each languages
+      const path = pathname.slice(3);
+      setMLPaths(LanguageCodes.map(l => ({
+        lang:   l,
+        path:   `/${l}${path}`,
+        active: l === lang
+      })));
+
+      setLanguage(lang);
     }
+  }, [pathname]);
+
+  useEffect(_ => {
+    const language = Languages.find(l => l.indexOf(lang) === 0);
+    if(language) {
+      console.log('setLanguage :' + language);
+      i18n.changeLanguage(language);
+    }
+  }, [lang, i18n]);
+
+  return (
+    <LanguageContext.Provider value={{ lang, mlPaths }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+const useLanguage = _ => {
+
+  const context = useContext(LanguageContext);
+
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a WithLanguage component');
   }
+
+  return context;
 }
 
 export {
-  initializeI18next,
-  useToWithLang
+  WithLanguage,
+  useLanguage
 }

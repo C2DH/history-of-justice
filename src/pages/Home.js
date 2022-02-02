@@ -1,9 +1,12 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+
 
 const Home = () => {
-  const { t } = useTranslation()
+
+  const { t } = useTranslation();
+
   return (
     <Container fluid className="h-100">
       <Row>

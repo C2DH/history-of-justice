@@ -1,30 +1,25 @@
-import { Container, Row, Col, Nav } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import LangNavLink from './LangNavLink'
+import { Link } from 'react-router-dom';
 import {
-  HomeRoute,
-  AboutRoute,
   TermsOfUseRoute
 } from '../constants'
 
 const now = new Date()
 
 const Footer = ()=> {
-  const { t } = useTranslation()
+
+  const { t } = useTranslation();
 
   return (
-    <Container>
+    <Container as="footer" className="py-5">
       <Row>
         <Col>Copyright © <a href="https://www.uni.lu/">University of Luxembourg</a> {now.getFullYear()}</Col>
         <Col>
-          <Nav className="flex-column">
-            <Nav.Item><LangNavLink to={HomeRoute.to} exact>{t(HomeRoute.label)}</LangNavLink></Nav.Item>
-            <Nav.Item><LangNavLink to={AboutRoute.to} exact>{t(AboutRoute.label)}</LangNavLink></Nav.Item>
-            <Nav.Item><LangNavLink to={TermsOfUseRoute.to} exact>{t(TermsOfUseRoute.label)}</LangNavLink></Nav.Item>
-          </Nav>
+          <Link to={TermsOfUseRoute.to}>{t(TermsOfUseRoute.label)}</Link>
         </Col>
         <Col>
-          View sourcecode of this version: <a href={`https://github.com/C2DH/popkult60-exhibit/commit/${process.env.REACT_APP_GIT_REVISION}`}>
+          View sourcecode of this version: <a href={`https://github.com/C2DH/legionnaire/commit/${process.env.REACT_APP_GIT_REVISION}`}>
           {process.env.REACT_APP_GIT_BRANCH}/{process.env.REACT_APP_GIT_REVISION}
           </a>
         </Col>
