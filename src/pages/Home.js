@@ -8,7 +8,7 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <Container fluid className="h-100">
+    <Container fluid className="h-100 mt-5 mx-5">
       <Row>
         <Col>
           <h1 className="my-5">{t('pagesHomeTitle')}</h1>

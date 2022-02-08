@@ -1,13 +1,28 @@
-export const HomeRoute = { to:'/', label: 'navigationHome'}
-export const CollectionRoute = { to: 'references', label: 'navigationCollection' }
-export const StoriesRoute = { to: 'stories', label: 'navigationStories' }
-export const AboutRoute = { to: 'about', label: 'navigationAbout' }
-export const TermsOfUseRoute = { to:'terms-of-use', label: 'navigationTermsOfUse'}
+export const HomeRoute = { to:'/', label: 'navigation.home'}
+export const HistoryOfJusticeSystemRoute = { to:'history-of-justice-system', label: 'navigation.history-of-justice-system'}
+export const MagistrateJobRoute = { to:'magistrate-job', label: 'navigation.magistrate-job'}
+export const CrimesAndTrialsRoute = { to:'crimes-and-trials', label: 'navigation.crimes-and-trials'}
+export const CollectionRoute = { to: 'references', label: 'navigation.collection' }
+export const AboutRoute = { to: 'about', label: 'navigation.about' }
+export const TermsOfUseRoute = { to:'terms-of-use', label: 'navigation.terms-of-use'}
+
 export const PrimaryRoutes = [
-  HomeRoute,
+  HistoryOfJusticeSystemRoute,
+  MagistrateJobRoute,
+  CrimesAndTrialsRoute,
   CollectionRoute,
   AboutRoute
 ]
+//  Use to get the active route. HomeRoute must be the last item
+export const AllRoutes = [
+  HistoryOfJusticeSystemRoute,
+  MagistrateJobRoute,
+  CrimesAndTrialsRoute,
+  CollectionRoute,
+  AboutRoute,
+  TermsOfUseRoute,
+  HomeRoute
+];
 
 export const Languages = (process.env.REACT_APP_LANGUAGES ?? 'en-GB,fr-FR,de-DE').split(',')
 export const LanguageCodes = Languages.map((l) => l.split('-')[0])

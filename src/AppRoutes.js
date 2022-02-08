@@ -14,6 +14,15 @@ import AppRouteLoading from './pages/AppRouteLoading';
 import { LanguageCodes } from './constants';
 import { useLanguage } from './logic/language';
 
+import {
+  HistoryOfJusticeSystemRoute,
+  MagistrateJobRoute,
+  CrimesAndTrialsRoute,
+  CollectionRoute,
+  AboutRoute,
+  TermsOfUseRoute
+} from './constants';
+
 /* Pages */
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -79,8 +88,12 @@ const LangRoutes = _ => (
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route path="terms-of-use" element={<TermsOfUse />} />
+      <Route path={HistoryOfJusticeSystemRoute.to} element={<About />} />
+      <Route path={MagistrateJobRoute.to} element={<About />} />
+      <Route path={CrimesAndTrialsRoute.to} element={<About />} />
+      <Route path={CollectionRoute.to} element={<About />} />
+      <Route path={AboutRoute.to} element={<About />} />
+      <Route path={TermsOfUseRoute.to} element={<TermsOfUse />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>

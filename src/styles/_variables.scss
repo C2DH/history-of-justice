@@ -1,13 +1,9 @@
-// Override variables:
-// https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
-// following doc
-// https://getbootstrap.com/docs/4.5/getting-started/theming/
-$theme-colors: (
-  'primary': #9b5de5,
-  'secondary': #222322,
-  'gray': #ececec,
-  'accent': #9b5de5,
-);
+$primary: #E7B12D;
+$secondary: #878787;
+$dark: black;
+$light: #FFF;
+$link-hover-color: #b98e24;
+$link-hover-dark: #525051;
+$body-color: black;
 
-$font-size-base: 1.2rem;
 $line-height-base: 1.75;
