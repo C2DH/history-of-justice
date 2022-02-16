@@ -11,7 +11,23 @@
       "navigation.terms-of-use": "Terms of use",
       "pagesHomeTitle": "History of Justice (en)",
       "pagesHomeSubheading": "",
-      "pagesNotFoundTitle": "Not Found"
+      "pagesNotFoundTitle": "Not Found",
+
+      "all": "All",
+      "archive document": "Archive document",
+      "drawing": "Drawing",
+      "gravure": "Gravure",
+      "illustration": "Illustration",
+      "lithographie": "Lithography",
+      "other": "Other",
+      "painting": "Painting",
+      "photo": "Photo",
+      "publication": "Publication",
+      "sculpture": "Sculpture",
+
+      "sort": "Sort",
+      "title": "Title",
+      "date": "Date"
     }
   },
   "fr-FR": {
@@ -26,7 +42,23 @@
       "navigation.terms-of-use": "Terms of use",
       "pagesHomeTitle": "History of Justice (fr)",
       "pagesHomeSubheading": "",
-      "pagesNotFoundTitle": "Not Found"
+      "pagesNotFoundTitle": "Not Found",
+
+      "all": "Tout",
+      "archive document": "Document d'archive",
+      "drawing": "Dessin",
+      "gravure": "Gravure",
+      "illustration": "Illustration",
+      "lithographie": "Lithographie",
+      "other": "Autre",
+      "painting": "Peinture",
+      "photo": "Photo",
+      "publication": "Publication",
+      "sculpture": "Sculpture",
+
+      "sort": "Trier",
+      "title": "Titre",
+      "date": "Date"
     }
   }
 }

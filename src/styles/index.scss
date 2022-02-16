@@ -6,12 +6,13 @@
 @import '~bootstrap/scss/bootstrap';
 
 :root {
+  --link-hover-color: #{$link-hover-color};
   --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
 
-body, html {
+body, html, #root {
   height: 100%;
 }
 
@@ -20,11 +21,16 @@ body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 65px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+select:focus {
+  box-shadow: none !important;
 }
 
 h1{

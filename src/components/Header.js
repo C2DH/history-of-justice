@@ -18,9 +18,10 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        className         = "Header mx-5"
+        className         = "Header px-5"
         fixed             = "top"
         expand            = {false}
+        bg                = "light"
         collapseOnSelect
       >
         <Navbar.Brand
@@ -32,7 +33,7 @@ const Header = () => {
           <span>History of Justice</span>
         </Navbar.Brand>
 
-        <Navbar.Text className="title">
+        <Navbar.Text className="title d-none d-sm-block">
           {t(activeRoute.label)}
         </Navbar.Text>
 

@@ -8,6 +8,7 @@ import translations from '../translations'
 import {
   Languages,
   LanguageCodes,
+  DefaultLanguage,
   DefaultLanguageCode
 } from '../constants'
 
@@ -47,6 +48,7 @@ const initializeI18next = pathname => {
     .init({
       resources: translations,
       lng: language,
+      defaultLanguage: DefaultLanguage,
       interpolation: {
         escapeValue: false, // react already safes from xss
         format: function(value, format, lng) {
