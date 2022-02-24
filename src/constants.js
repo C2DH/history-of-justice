@@ -3,10 +3,10 @@ export const HistoryOfJusticeSystemRoute = { to:'history-of-justice-system', lab
 export const MagistrateJobRoute = { to:'magistrate-job', label: 'navigation.magistrate-job'}
 export const CrimesAndTrialsRoute = { to:'crimes-and-trials', label: 'navigation.crimes-and-trials'}
 export const CollectionRoute = { to: 'collection', label: 'navigation.collection' }
-export const MediaRoute = { to: 'collection' }
+export const MediaRoute = { to: 'media', label: 'navigation.media' }
 export const AboutRoute = { to: 'about', label: 'navigation.about' }
-export const TermsOfUseRoute = { to:'terms-of-use', label: 'navigation.terms-of-use'}
 
+export const TermsOfUseRoute = { to:'terms-of-use', label: 'navigation.terms-of-use'}
 export const PrimaryRoutes = [
   HistoryOfJusticeSystemRoute,
   MagistrateJobRoute,
@@ -19,6 +19,7 @@ export const AllRoutes = [
   HistoryOfJusticeSystemRoute,
   MagistrateJobRoute,
   CrimesAndTrialsRoute,
+  MediaRoute,
   CollectionRoute,
   AboutRoute,
   TermsOfUseRoute,

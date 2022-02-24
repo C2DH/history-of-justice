@@ -7,10 +7,9 @@
       "navigation.magistrate-job": "The magistrate's job",
       "navigation.crimes-and-trials": "Crimes and trials",
       "navigation.collection": "Collection",
+      "navigation.media": "Document",
       "navigation.about": "About",
       "navigation.terms-of-use": "Terms of use",
-      "pagesHomeTitle": "History of Justice (en)",
-      "pagesHomeSubheading": "",
       "pagesNotFoundTitle": "Not Found",
 
       "all": "All",
@@ -27,7 +26,16 @@
 
       "sort": "Sort",
       "title": "Title",
-      "date": "Date"
+      "date": "Date",
+
+      "type": "Type",
+      "year": "Year(s)",
+      "author": "Author",
+      "photographer": "Photographer",
+      "copyright": "Copyright",
+
+      "inconnu": "Unknown",
+      "uncertain": "Uncertain"
     }
   },
   "fr-FR": {
@@ -38,10 +46,9 @@
       "navigation.magistrate-job": "Le travail du magistrat",
       "navigation.crimes-and-trials": "Punir le crime",
       "navigation.collection": "Collection",
+      "navigation.media": "Document",
       "navigation.about": "À propos",
       "navigation.terms-of-use": "Terms of use",
-      "pagesHomeTitle": "History of Justice (fr)",
-      "pagesHomeSubheading": "",
       "pagesNotFoundTitle": "Not Found",
 
       "all": "Tout",
@@ -58,7 +65,16 @@
 
       "sort": "Trier",
       "title": "Titre",
-      "date": "Date"
+      "date": "Date",
+
+      "type": "Type",
+      "year": "Année(s)",
+      "author": "Auteur",
+      "photographer": "Photographe",
+      "copyright": "Copyright",
+
+      "inconnu": "Inconnu",
+      "uncertain": "Incertaine"
     }
   }
 }

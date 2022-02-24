@@ -5,7 +5,7 @@ import CollectionCard from './CollectionCard';
 const COLUMN_WIDTH = 330;
 const COLUMN_HEIGHT = 370;
 
-const CollectionGrid = ({ items, canLoadMore=false, loadMore }) => {
+const CollectionGrid = ({ items, canLoadMore=false, loadMore, container }) => {
 
   const [colCount, setColCount] = useState(3);
   const rowCount = Math.ceil(items.length / colCount);
@@ -37,31 +37,31 @@ const CollectionGrid = ({ items, canLoadMore=false, loadMore }) => {
   }
 
   return (
-    <WindowScroller>
+    <WindowScroller scrollElement={container}>
       {({ height, isScrolling, registerChild, scrollTop }) => (
         <AutoSizer
           disableHeigth
-          style         = {{ height: 'auto' }}
           onResize      = {onResize}
           className     = "w-100"
         >
           {() => (
-
             <div ref={registerChild}>
-              <Grid
-                autoHeight
-                className         = "mx-auto"
-                cellRenderer      = {cellRenderer}
-                columnCount       = {colCount}
-                height            = {height}
-                width             = {colCount * COLUMN_WIDTH}
-                rowCount          = {rowCount}
-                columnWidth       = {COLUMN_WIDTH}
-                rowHeight         = {COLUMN_HEIGHT}
-                scrollTop         = {scrollTop}
-                isScrolling       = {isScrolling}
-                onSectionRendered = {onSectionRendered}
-              />
+              {height &&
+                <Grid
+                  autoHeight
+                  className         = "mx-auto"
+                  cellRenderer      = {cellRenderer}
+                  columnCount       = {colCount}
+                  height            = {height}
+                  width             = {colCount * COLUMN_WIDTH}
+                  rowCount          = {rowCount}
+                  columnWidth       = {COLUMN_WIDTH}
+                  rowHeight         = {COLUMN_HEIGHT}
+                  scrollTop         = {scrollTop}
+                  isScrolling       = {isScrolling}
+                  onSectionRendered = {onSectionRendered}
+                />
+              }
             </div>
           )}
         </AutoSizer>

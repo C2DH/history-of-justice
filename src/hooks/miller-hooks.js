@@ -1,18 +1,42 @@
 import { useTranslation } from 'react-i18next';
-import { useDocuments } from '@c2dh/react-miller';
+import { useDocument, useDocuments } from '@c2dh/react-miller';
 import { find, pull, orderBy } from 'lodash';
 
 import { lang2Field } from '../utils';
 
 
+const FIELD_PREFIX    = 'data__';
+const TITLE_FIELD     = 'title';
+
+/**
+ * Hook to get a media identified by its id from the backend
+ * @param   id  id or slug of the media to get
+ */
+export function useMedia(id) {
+
+  const { i18n } = useTranslation();
+
+  const config = {
+    language: lang2Field(i18n.language),
+    defaultLanguage: lang2Field(i18n.options.defaultLanguage),
+    cached: true
+  };
+
+  return useDocument(id, config);
+
+}
+
 /**
  * Hook to get paginated list of medias
  * @param   offset  offset of the current page to load
  * @param   type    type of the media to get
+ * @param   orderBy name of the field used to sort documents
  */
 export function useMedias(offset = 0, type, orderBy) {
 
   const { i18n } = useTranslation();
+
+  orderBy = orderBy || `${TITLE_FIELD}__${lang2Field(i18n.language)}`;
 
   const params = {
     filters: {
@@ -21,7 +45,7 @@ export function useMedias(offset = 0, type, orderBy) {
     },
     limit: 50,
     offset: offset,
-    orderby: orderBy,
+    orderby: FIELD_PREFIX + orderBy,
     facets: 'type'
   };
 
@@ -32,8 +56,6 @@ export function useMedias(offset = 0, type, orderBy) {
     translated:  true,
     cached: true
   };
-
-  console.log(config);
 
   return useDocuments(params, config, false);
 

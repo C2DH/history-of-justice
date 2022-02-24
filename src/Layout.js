@@ -7,7 +7,7 @@ import Header from './components/Header';
 const Layout = _ => (
   <React.Fragment>
     <Header />
-    <main className="mt-3 h-100">
+    <main className="h-100 position-relative">
       <Outlet />
     </main>
   </React.Fragment>

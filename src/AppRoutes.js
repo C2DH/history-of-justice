@@ -19,6 +19,7 @@ import {
   MagistrateJobRoute,
   CrimesAndTrialsRoute,
   CollectionRoute,
+  MediaRoute,
   AboutRoute,
   TermsOfUseRoute
 } from './constants';
@@ -26,6 +27,7 @@ import {
 /* Pages */
 const Home = lazy(() => import('./pages/Home'));
 const Collection = lazy(() => import('./pages/Collection'));
+const Media = lazy(() => import('./pages/Media'));
 const About = lazy(() => import('./pages/About'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -92,7 +94,9 @@ const LangRoutes = _ => (
       <Route path={HistoryOfJusticeSystemRoute.to} element={<About />} />
       <Route path={MagistrateJobRoute.to} element={<About />} />
       <Route path={CrimesAndTrialsRoute.to} element={<About />} />
-      <Route path={CollectionRoute.to} element={<Collection />} />
+      <Route path={CollectionRoute.to} element={<Collection />}>
+        <Route path={`${MediaRoute.to}/:slug`} element={<Media />} />
+      </Route>
       <Route path={AboutRoute.to} element={<About />} />
       <Route path={TermsOfUseRoute.to} element={<TermsOfUse />} />
       <Route path="*" element={<NotFound />} />
