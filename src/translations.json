@@ -37,7 +37,9 @@
       "copyright": "Copyright",
 
       "inconnu": "Unknown",
-      "uncertain": "Uncertain"
+      "uncertain": "Uncertain",
+      "unknown": "Unknown",
+      "end of 19th century": "End of 19th century"
     }
   },
   "fr-FR": {
@@ -78,7 +80,9 @@
       "copyright": "Copyright",
 
       "inconnu": "Inconnu",
-      "uncertain": "Incertaine"
+      "uncertain": "Incertain",
+      "unknown": "Inconnu",
+      "end of 19th century": "Fin du 19ème siècle"
     }
   }
 }

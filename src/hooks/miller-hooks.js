@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useDocument, useDocuments } from '@c2dh/react-miller';
+import { useStories, useDocument, useDocuments } from '@c2dh/react-miller';
 import { find, pull, orderBy } from 'lodash';
 
 import { lang2Field } from '../utils';
@@ -7,6 +7,27 @@ import { lang2Field } from '../utils';
 
 const FIELD_PREFIX    = 'data__';
 const TITLE_FIELD     = 'title';
+
+/**
+ * Hook to get stories
+ */
+const themesParams = {
+  filters: {
+    tags: 1
+  }
+};
+export function useThemes() {
+
+  const { i18n } = useTranslation();
+
+  const config = {
+    language: lang2Field(i18n.language),
+    defaultLanguage: lang2Field(i18n.options.defaultLanguage),
+    cached: false
+  };
+
+  return useStories(themesParams, config);
+}
 
 /**
  * Hook to get a media identified by its id from the backend

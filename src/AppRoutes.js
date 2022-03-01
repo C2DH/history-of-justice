@@ -26,6 +26,7 @@ import {
 
 /* Pages */
 const Home = lazy(() => import('./pages/Home'));
+const Story = lazy(() => import('./pages/Story'));
 const Collection = lazy(() => import('./pages/Collection'));
 const Media = lazy(() => import('./pages/Media'));
 const About = lazy(() => import('./pages/About'));
@@ -91,7 +92,10 @@ const LangRoutes = _ => (
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path={HistoryOfJusticeSystemRoute.to} element={<About />} />
+      <Route path={HistoryOfJusticeSystemRoute.to}>
+        <Route index element={<Navigate to="la-naissance-du-systeme-judiciaire-contemporain-au-19e-siecle" />} />
+        <Route path=":slug" element={<Story />} />
+      </Route>
       <Route path={MagistrateJobRoute.to} element={<About />} />
       <Route path={CrimesAndTrialsRoute.to} element={<About />} />
       <Route path={CollectionRoute.to} element={<Collection />}>

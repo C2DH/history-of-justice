@@ -6353,6 +6353,7 @@ __metadata:
     react-router-dom: ^6.2.1
     react-scripts: 5.0.0
     react-virtualized: ^9.22.3
+    roman-numerals: ^0.3.2
     sass: ^1.49.7
     use-query-params: ^1.2.3
     web-vitals: ^2.1.4
@@ -10687,6 +10688,13 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: ecd7917deeaa3005ac7cdd64186daf024594bd9ba940e32fc8966602a83349074d0ec999256009dc4475e7c3786ac52cdd824ee9df514b8c356b960fda6bfb34
+  languageName: node
+  linkType: hard
+
+"roman-numerals@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "roman-numerals@npm:0.3.2"
+  checksum: e797efc49d5ba9fc18a44b07afb9da3de9748d3a6326b999c432a05f89be6438516e819a2dc12e9ebfae5c975f3934e70a183e2f0da673373a5965574eb3a7ef
   languageName: node
   linkType: hard
 
