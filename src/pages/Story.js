@@ -46,6 +46,7 @@ const Story = () => {
               to        = {`../${theme.slug}`}
               key       = {theme.slug}
               eventKey  = {theme.slug}
+              style     = {{ width: `${100 / themes.length}%` }}
             >
               {toRoman(i+1)} &ndash; {theme.data.title}
             </Nav.Link>

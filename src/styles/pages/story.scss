@@ -1,7 +1,7 @@
 .Story {
 
   font-size: 1.5rem;
-  line-height: 1.2;
+  line-height: 1.4;
 
   .bg-image {
     content: "";
@@ -24,22 +24,52 @@
 
     a {
       font-size: 1.5rem;
-      line-height: 4;
+      line-height: 2.5;
       white-space: nowrap;
       overflow: hidden;
-      flex: 0 1 auto;
-      width: calc(100% /3);
-      margin-right: 2rem;
-      padding: 0 0 0 2rem;
+      flex: 1 1 auto;
+      max-width: fit-content;
+      padding: 1rem 2rem;
       transition: all 0.5s;
+      position: relative;
 
       & + a {
         border-left: 1px solid var(--bs-gray-300);
       }
 
+      &.active {
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5rem solid var(--bs-gray-400);
+      }
+
       &:hover {
-        width: 100%;
+        width: 100% !important;
         overflow: visible;
+
+        &::after {
+          background: none;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+      }
+    }
+
+    &:not(:hover) {
+      a.active {
+        width: 100% !important;
+        overflow: visible;
+
+        &::after {
+          background: none;
+        }
       }
     }
   }
