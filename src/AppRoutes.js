@@ -112,6 +112,7 @@ const LangRoutes = _ => (
 const AppRoutes = ({ enableGA=false }) => {
 
   const { lang } = useLanguage();
+  const location = useLocation();
 
   return (
     <React.Fragment>
@@ -123,8 +124,7 @@ const AppRoutes = ({ enableGA=false }) => {
             {LanguageCodes.map(lang =>
               <Route path={`${lang}/*`} element={<LangRoutes />} key="lang" />
             )}
-            <Route path="/" element={<Navigate to={`/${lang}`} />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<Navigate to={`/${lang}${location.pathname}`} />} />
           </Routes>
         </QueryParamProvider>
       </Suspense>

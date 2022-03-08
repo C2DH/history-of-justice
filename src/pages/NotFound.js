@@ -9,7 +9,7 @@ const NotFound = () => {
       <Row>
         <Col>
           <h1 className="my-5">{t('pages.notFound.title')}</h1>
-          <p>{t('pages.notFound.subheading')}</p>
+          <p className="fs-2">{t('pages.notFound.subheading')}</p>
         </Col>
       </Row>
     </Container>

@@ -12,7 +12,8 @@
       "navigation.terms-of-use": "Terms of use",
       "pagesHomeTitle": "History of Justice (en)",
       "pagesHomeSubheading": "",
-      "pagesNotFoundTitle": "Not Found",
+      "pages.notFound.title": "Oops...",
+      "pages.notFound.subheading": "This page doesn't exist.",
 
       "all": "All",
       "archive document": "Archive document",
@@ -55,7 +56,9 @@
       "navigation.terms-of-use": "Terms of use",
       "pagesHomeTitle": "History of Justice (fr)",
       "pagesHomeSubheading": "",
+      "pages.notFound.title": "Oops...",
       "pagesNotFoundTitle": "Not Found",
+      "pages.notFound.subheading": "Cette page n'existe pas.",
 
       "all": "Tout",
       "archive document": "Document d'archive",
