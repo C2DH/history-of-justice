@@ -1,0 +1,23 @@
+.MediaCard {
+  font-size: 0.75rem;
+
+  img {
+    width: 100%;
+  }
+
+  .metadata {
+    white-space: pre-line;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .type {
+      text-transform: uppercase;
+      color: var(--bs-gray-600);
+    }
+  }
+
+  & + .MediaCard {
+    margin-top: 1rem;
+  }
+}

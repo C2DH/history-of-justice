@@ -1,48 +1,49 @@
-import React from 'react'
-import { useParams, NavLink } from 'react-router-dom';
-import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap'
+import React, { useRef } from 'react';
+import { useParams, NavLink, Outlet } from 'react-router-dom';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { find } from 'lodash';
 import { toRoman } from 'roman-numerals';
 
-import { useThemes } from '../hooks';
+import Chapter from '../components/story/Chapter';
+import { useThemes } from '../logic/miller';
 
-import '../styles/pages/story.scss';
+import '../styles/pages/Story.scss';
 
 
 const Story = () => {
 
-  const { slug }          = useParams();
-  const [ themes ]        = useThemes();
-  const theme             = find(themes, { slug });
-  const cover             = theme?.covers[0]?.snapshot;
+  const { storySlug: slug }   = useParams();
+  const [ themes ]            = useThemes();
+  const theme                 = find(themes, { slug });
+  const cover                 = theme?.covers[0];
+  const storyEl               = useRef();
+
+  const storyMenu_clickHandler = () => storyEl.current.scrollTo(0, 0);
 
   return (
-    <div className="Story h-100 pt-5" >
-      {cover &&
-        <div className="bg-image" style={{ backgroundImage: `url(${cover})` }} />
-      }
+    <React.Fragment>
+      <div className="Story" ref={storyEl}>
 
-      <Container>
-        <Row>
-          <Col lg>
-            <h1>{theme?.data.title}</h1>
-          </Col>
-          <Col>
-            {theme?.data.abstract}
-          </Col>
-        </Row>
-      </Container>
+        {cover?.snapshot &&
+          <div className="bg-image" style={{ backgroundImage: `url(${cover.snapshot})` }} />
+        }
 
-      <Navbar
-        fixed             = "bottom"
-        expand            = {false}
-        bg                = "light"
-        className         = "story-menu"
-        collapseOnSelect
-      >
-        {themes?.map((theme, i) =>
+        <Container className="intro">
+          <Row>
+            <Col lg>
+              <h1>{theme?.data.title}</h1>
+            </Col>
+            <Col>
+              <span>{theme?.data.abstract}</span>
+            </Col>
+          </Row>
+        </Container>
+
+        <Nav className="story-menu">
+          {themes?.map((theme, i) =>
             <Nav.Link
               as        = {NavLink}
+              onClick   = {storyMenu_clickHandler}
               to        = {`../${theme.slug}`}
               key       = {theme.slug}
               eventKey  = {theme.slug}
@@ -50,9 +51,20 @@ const Story = () => {
             >
               {toRoman(i+1)} &ndash; {theme.data.title}
             </Nav.Link>
+          )}
+        </Nav>
+
+        {theme?.data.chapters?.map((chapterId, i) =>
+          <Chapter
+            id    = {chapterId}
+            index = {i}
+            key   = {chapterId.toString()}
+          />
         )}
-      </Navbar>
-    </div>
+      </div>
+
+      <Outlet />
+    </React.Fragment>
   )
 }
 

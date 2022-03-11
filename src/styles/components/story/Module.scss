@@ -1,0 +1,22 @@
+.Module {
+  .media-box {
+    height: 100%;
+    background-color: var(--bs-gray-200);
+    padding: 1.25rem;
+    position: relative;
+  }
+
+  & + .Module .media-box {
+    margin-top: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1.25rem;
+      right: 1.25rem;
+      height: 1px;
+      background-color: var(--bs-gray-500);
+    }
+  }
+}

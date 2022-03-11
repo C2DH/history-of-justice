@@ -16,18 +16,19 @@ export const PrimaryRoutes = [
 ]
 //  Use to get the active route. HomeRoute must be the last item
 export const AllRoutes = [
+  MediaRoute,
   HistoryOfJusticeSystemRoute,
   MagistrateJobRoute,
   CrimesAndTrialsRoute,
-  MediaRoute,
   CollectionRoute,
   AboutRoute,
   TermsOfUseRoute,
   HomeRoute
 ];
 
-export const Languages = (process.env.REACT_APP_LANGUAGES ?? 'en-GB,fr-FR,de-DE').split(',')
-export const LanguageCodes = Languages.map((l) => l.split('-')[0])
-export const LanguageRoutePattern = `/:lang(${LanguageCodes.join('|')})`
-export const DefaultLanguage = process.env.REACT_APP_DEFAULT_LANGUAGE ?? 'en-GB'
-export const DefaultLanguageCode = DefaultLanguage.split('-')[0]
+export const Languages = (process.env.REACT_APP_LANGUAGES ?? 'en-GB,fr-FR,de-DE').split(',');
+export const LanguageCodes = Languages.map((l) => l.split('-')[0]);
+export const LanguageRoutePattern = `/:lang(${LanguageCodes.join('|')})`;
+export const DefaultLanguage = process.env.REACT_APP_DEFAULT_LANGUAGE ?? 'en-GB';
+export const DefaultLanguageCode = DefaultLanguage.split('-')[0];
+export const MillerAPI = process.env.REACT_APP_MILLER_API ?? '/api';

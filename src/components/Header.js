@@ -26,7 +26,7 @@ const Header = () => {
       >
         <Navbar.Brand
           as        = {Link}
-          to        = "/"
+          to        = "."
           className = "logo"
         >
           <img src="/logo.svg" alt="Logo Histoire de la Justice" />

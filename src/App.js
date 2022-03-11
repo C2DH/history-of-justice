@@ -1,13 +1,16 @@
 import AppRoutes from './AppRoutes';
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom";
 
 import { WithLanguage } from './logic/language';
+import { WithMiller } from './logic/miller';
 
 
-const App = _ => (
+const App = () => (
   <BrowserRouter>
     <WithLanguage>
-      <AppRoutes />
+      <WithMiller>
+        <AppRoutes />
+      </WithMiller>
     </WithLanguage>
   </BrowserRouter>
 );

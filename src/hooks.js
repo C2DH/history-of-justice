@@ -1,11 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import _ from 'lodash';
 
-import { AllRoutes } from '../constants';
-import { useLanguage } from '../logic/language';
-
-
-export * from './miller-hooks';
+import { AllRoutes } from './constants';
+import { useLanguage } from './logic/language';
 
 
 export const useActiveRoute = () => {

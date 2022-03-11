@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col, Nav, Form } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
 
-import { useMedias, useMediaFacets } from '../hooks';
+import { useMedias, useMediaFacets } from '../logic/miller';
 import CollectionGrid from '../components/CollectionGrid';
 
 import '../styles/pages/Collection.scss';
@@ -17,35 +17,36 @@ const DATE_FIELD      = 'start_date';
 const Collection = () => {
 
   const { t }   = useTranslation();
-  const rootEl  = useRef();
 
-  const [offset,    setOffset]    = useState(0);
-  const [queryType, setQueryType] = useQueryParam('type', StringParam);
-  const [orderBy,   setOrderBy]   = useQueryParam('order', StringParam);
+  const [rootEl,    rootElRef]      = useState();
+  const [queryType, setQueryType]   = useQueryParam('type', StringParam);
+  const [orderBy,   setOrderBy]     = useQueryParam('order', StringParam);
 
-  const { mediaTypeFacets, count }              = useMediaFacets();
-  const [medias, { next, hasNext }, { clean }]  = useMedias(offset, queryType, orderBy);
+  const { mediaTypeFacets, count }  = useMediaFacets();
+  const [medias, {
+    hasNextPage,
+    fetchNextPage,
+//    remove
+  }] = useMedias(queryType, orderBy);
 
 
   function mediaTypeFacet_handleSelect(type) {
 
     if(type === queryType || (type === TYPE_FACET_ALL && !queryType)) return;
 
-    clean();
-    setOffset(0);
+    rootEl.scrollTo(0, 0);
     setQueryType(type !== TYPE_FACET_ALL ? type : undefined);
   }
 
   function orderBy_handleSelect(e) {
-    clean();
-    setOffset(0);
+    rootEl.scrollTo(0, 0);
     setOrderBy(e.target.value || undefined);
   }
 
 
   return (
     <React.Fragment>
-      <Container fluid className="Collection" ref={rootEl}>
+      <Container fluid className="Collection" ref={rootElRef}>
 
         <Row className="position-sticky">
           <Col>
@@ -80,12 +81,12 @@ const Collection = () => {
 
         <Row className="h-100" style={{ justifyContent: "center" }}>
           <Col className="p-0">
-          {medias &&
+          {rootEl && medias &&
             <CollectionGrid
               items       = {medias}
-              canLoadMore = {hasNext}
-              loadMore    = {() => setOffset(next.offset)}
-              container   = {rootEl.current}
+              canLoadMore = {hasNextPage}
+              loadMore    = {fetchNextPage}
+              container   = {rootEl}
             />
           }
           </Col>

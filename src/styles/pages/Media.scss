@@ -1,72 +1,80 @@
 .Media {
 
   position: absolute;
-  background-color: var(--bs-gray-300);
+  background-color: white;
   top: 0;
   height: 100%;
-  padding: 3rem;
+  width: 100%;
+  padding: 0 1rem 1rem;
+  margin: 0;
   z-index: 1;
 
-  .back-icon {
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
-  }
-
-  .metadata {
-
-    h1 {
-      font-size: 2.25rem;
-    }
-
-    a {
-      word-break: break-all;
-    }
-
-    .label {
-      font-weight: bold;
-    }
-  }
-
-  .picture {
-
-    background-color: var(--bs-gray-700);
+  .content {
+    background-color: var(--bs-gray-300);
+    padding: 3rem 2rem 2rem;
+    margin: 0;
     height: 100%;
-    position: relative;
 
-    .tools {
+    .back-icon {
       position: absolute;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      top: 20px;
-      left: 20px;
-      -webkit-transform: scale3d(1,1,1);  // To fix render issue on CHrome
+      top: 0.5rem;
+      left: 2rem;
+    }
 
-      button {
-        border: none;
-        background-color: rgba(var(--bs-primary-rgb), .7);
-        height: 26px;
-        width: 26px;
+    .metadata {
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      a {
+        word-break: break-all;
+      }
+
+      .label {
         font-weight: bold;
-        line-height: 24px;
-
-        &.zoomIn {
-          border-bottom: 1px solid rgba(var(--bs-dark-rgb), .1);
-        }
       }
     }
 
-    .react-transform-wrapper {
-      height: 100%;
-      width: 100%;
+    .picture {
 
-      .react-transform-component {
-        img {
-          max-width: 100%;
-          max-height: calc(100vh - 10rem);
+      background-color: var(--bs-gray-700);
+      height: 100%;
+      position: relative;
+
+      .tools {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        top: 20px;
+        left: 20px;
+        -webkit-transform: scale3d(1,1,1);  // To fix render issue on CHrome
+
+        button {
+          border: none;
+          height: 26px;
+          width: 26px;
+          font-weight: bold;
+          line-height: 24px;
+
+          &.zoomIn {
+            border-bottom: 1px solid rgba(var(--bs-dark-rgb), .1);
+          }
+        }
+      }
+
+      .react-transform-wrapper {
+        height: 100%;
+        width: 100%;
+
+        .react-transform-component {
+          img {
+            max-width: 100%;
+            max-height: calc(100vh - 10rem);
+          }
         }
       }
     }

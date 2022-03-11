@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { lazy, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import { QueryParamProvider } from 'use-query-params';
 import {
@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 
 import Layout from './Layout';
-import AppRouteLoading from './pages/AppRouteLoading';
 import { LanguageCodes } from './constants';
 import { useLanguage } from './logic/language';
 
@@ -55,13 +54,6 @@ const GA = ({ enabled = false }) => {
 }
 
 
-const ScrollToTop = _ => {
-  let location = useLocation();
-  useEffect(_ => window.scrollTo(0, 0), [location]);
-  return null;
-}
-
-
 /**
  * This is the main thing you need to use to adapt the react-router v6
  * API to what use-query-params expects.
@@ -94,12 +86,14 @@ const LangRoutes = _ => (
       <Route index element={<Home />} />
       <Route path={HistoryOfJusticeSystemRoute.to}>
         <Route index element={<Navigate to="la-naissance-du-systeme-judiciaire-contemporain-au-19e-siecle" />} />
-        <Route path=":slug" element={<Story />} />
+        <Route path=":storySlug" element={<Story />}>
+          <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
+        </Route>
       </Route>
       <Route path={MagistrateJobRoute.to} element={<About />} />
       <Route path={CrimesAndTrialsRoute.to} element={<About />} />
       <Route path={CollectionRoute.to} element={<Collection />}>
-        <Route path={`${MediaRoute.to}/:slug`} element={<Media />} />
+        <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
       </Route>
       <Route path={AboutRoute.to} element={<About />} />
       <Route path={TermsOfUseRoute.to} element={<TermsOfUse />} />
@@ -117,17 +111,14 @@ const AppRoutes = ({ enableGA=false }) => {
   return (
     <React.Fragment>
       <GA enabled={enableGA} />
-      <ScrollToTop />
-      <Suspense fallback={<AppRouteLoading/>}>
-        <QueryParamProvider ReactRouterRoute={RouteAdapter}>
-          <Routes>
-            {LanguageCodes.map(lang =>
-              <Route path={`${lang}/*`} element={<LangRoutes />} key="lang" />
-            )}
-            <Route path="*" element={<Navigate to={`/${lang}${location.pathname}`} />} />
-          </Routes>
-        </QueryParamProvider>
-      </Suspense>
+      <QueryParamProvider ReactRouterRoute={RouteAdapter}>
+        <Routes>
+          {LanguageCodes.map(lang =>
+            <Route path={`${lang}/*`} element={<LangRoutes />} key="lang" />
+          )}
+          <Route path="*" element={<Navigate to={`/${lang}${location.pathname}`} />} />
+        </Routes>
+      </QueryParamProvider>
     </React.Fragment>
   );
 }

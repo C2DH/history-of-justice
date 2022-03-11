@@ -2,9 +2,10 @@ import React  from 'react';
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
+import { useDocument } from '@c2dh/react-miller';
 
 import { ImageViewer, PDFViewer } from '../components/Viewer';
-import { useMedia, useDate } from '../hooks';
+import { useDate } from '../hooks';
 
 import { ReactComponent as BackIcon } from '../images/icons/back.svg';
 import '../styles/pages/Media.scss';
@@ -13,13 +14,13 @@ import '../styles/pages/Media.scss';
 const Media = () => {
 
   const { t }         = useTranslation();
-  const { slug }      = useParams();
-  const [ media ]     = useMedia(slug);
+  const { mediaSlug } = useParams();
+  const [ media ]     = useDocument(mediaSlug);
   const { parseDate } = useDate();
 
   return (
     <Container fluid className="Media">
-      <Row className="h-100">
+      <Row className="h-100 content">
         <Col md={4} className="metadata mb-3">
           <Link to=".." className="back-icon">
             <BackIcon />
