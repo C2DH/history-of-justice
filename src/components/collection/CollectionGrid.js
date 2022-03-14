@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Grid, WindowScroller, AutoSizer } from 'react-virtualized';
+
 import CollectionCard from './CollectionCard';
+import { useScrollEl } from '../ScrollContainer';
+
 
 const COLUMN_WIDTH = 330;
 const COLUMN_HEIGHT = 370;
 
-const CollectionGrid = ({ items, canLoadMore=false, loadMore, container }) => {
+
+const CollectionGrid = ({ items, canLoadMore=false, loadMore }) => {
 
   const [colCount, setColCount] = useState(3);
-  const rowCount = Math.ceil(items.length / colCount);
+  const rowCount                = Math.ceil(items.length / colCount);
+  const { scrollEl }            = useScrollEl();
 
   function cellRenderer({ columnIndex, key, rowIndex, style }) {
 
@@ -37,7 +42,7 @@ const CollectionGrid = ({ items, canLoadMore=false, loadMore, container }) => {
   }
 
   return (
-    <WindowScroller scrollElement={container}>
+    <WindowScroller scrollElement={scrollEl}>
       {({ height, isScrolling, registerChild, scrollTop }) => (
         <AutoSizer
           disableHeigth

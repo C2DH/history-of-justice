@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-import { useParams, NavLink, Outlet } from 'react-router-dom';
-import { Container, Row, Col, Nav } from 'react-bootstrap';
+import React from 'react';
+import { useParams, Outlet } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import { find } from 'lodash';
-import { toRoman } from 'roman-numerals';
 
-import Chapter from '../components/story/Chapter';
+import ScrollContainer from '../components/ScrollContainer';
+import { StoryMenu, Chapter } from '../components/story';
 import { useThemes } from '../logic/miller';
 
 import '../styles/pages/Story.scss';
@@ -16,13 +16,11 @@ const Story = () => {
   const [ themes ]            = useThemes();
   const theme                 = find(themes, { slug });
   const cover                 = theme?.covers[0];
-  const storyEl               = useRef();
 
-  const storyMenu_clickHandler = () => storyEl.current.scrollTo(0, 0);
 
   return (
     <React.Fragment>
-      <div className="Story" ref={storyEl}>
+      <ScrollContainer className="Story">
 
         {cover?.snapshot &&
           <div className="bg-image" style={{ backgroundImage: `url(${cover.snapshot})` }} />
@@ -39,20 +37,7 @@ const Story = () => {
           </Row>
         </Container>
 
-        <Nav className="story-menu">
-          {themes?.map((theme, i) =>
-            <Nav.Link
-              as        = {NavLink}
-              onClick   = {storyMenu_clickHandler}
-              to        = {`../${theme.slug}`}
-              key       = {theme.slug}
-              eventKey  = {theme.slug}
-              style     = {{ width: `${100 / themes.length}%` }}
-            >
-              {toRoman(i+1)} &ndash; {theme.data.title}
-            </Nav.Link>
-          )}
-        </Nav>
+        <StoryMenu themes={themes} />
 
         {theme?.data.chapters?.map((chapterId, i) =>
           <Chapter
@@ -61,7 +46,7 @@ const Story = () => {
             key   = {chapterId.toString()}
           />
         )}
-      </div>
+      </ScrollContainer>
 
       <Outlet />
     </React.Fragment>

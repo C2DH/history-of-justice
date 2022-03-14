@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { truncate } from 'lodash';
 
-import { MediaRoute } from '../constants';
+import { MediaRoute } from '../../constants';
 
-import '../styles/components/CollectionCard.scss';
+import '../../styles/components/collection/CollectionCard.scss';
 
 const TRUNCATE_OPTIONS = {
   length: 85,

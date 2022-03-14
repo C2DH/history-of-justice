@@ -14,13 +14,4 @@
 //    margin: -1rem 0 -0.5rem 0;
   }
 
-  .media-type-facet .nav-link {
-    padding: 0;
-    margin: 0 1rem;
-    transition-property: border;
-
-    &.active, &:hover {
-      color: var(--link-hover-color);
-    }
-  }
 }
