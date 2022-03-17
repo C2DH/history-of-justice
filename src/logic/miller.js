@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import {
   Miller,
+  useStory,
   useStories,
   useInfiniteDocuments,
   useDocumentsFacets
@@ -9,7 +10,11 @@ import { QueryClient } from 'react-query'
 import { find, pull, orderBy } from 'lodash';
 
 import { lang2Field } from '../utils';
-import { Languages, MillerAPI } from '../constants';
+import {
+  Languages,
+  MillerAPI,
+  CrimesThemeId
+} from '../constants';
 
 
 const CLIENT = new QueryClient({
@@ -32,6 +37,8 @@ const CLIENT = new QueryClient({
 const FIELD_PREFIX        = 'data__';
 const TITLE_FIELD         = 'title';
 
+const ASCENDING_ORDER     = 'asc';
+
 
 /**
  * Hook to get stories
@@ -39,11 +46,29 @@ const TITLE_FIELD         = 'title';
 const THEMES_PARAMS = {
   filters: {
     tags: 1
+  },
+  exclude: {
+    slug: CrimesThemeId
   }
 };
 export const useThemes = () => {
   const [data, meta] = useStories({ params: THEMES_PARAMS, suspense: false });
   return [data?.results, meta];
+}
+
+
+/**
+ * Hook to get crimes
+ * @param   order   order to sort crimes
+ */
+export const useCrimes = (order = ASCENDING_ORDER) => {
+
+  const [data, meta] = useStory(CrimesThemeId);
+
+  let crimes = data?.data.chapters.map(id => find(data.stories, ['id', id]));
+  crimes = orderBy(crimes, 'data.abstract', order);
+
+  return [crimes, meta];
 }
 
 

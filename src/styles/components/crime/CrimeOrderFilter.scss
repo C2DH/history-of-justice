@@ -1,0 +1,19 @@
+.CrimeOrderFilter {
+
+  button, button:hover, button:focus {
+    background: none !important;
+    border: none !important;
+    color: var(--bs-primary) !important;
+    box-shadow: none !important;
+    padding: 0;
+  }
+
+  button::after {
+    margin-bottom: -3px;
+    border-top-width: 8px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    margin-left: 0.5rem;
+  }
+
+}

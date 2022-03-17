@@ -32,3 +32,5 @@ export const LanguageRoutePattern = `/:lang(${LanguageCodes.join('|')})`;
 export const DefaultLanguage = process.env.REACT_APP_DEFAULT_LANGUAGE ?? 'en-GB';
 export const DefaultLanguageCode = DefaultLanguage.split('-')[0];
 export const MillerAPI = process.env.REACT_APP_MILLER_API ?? '/api';
+
+export const CrimesThemeId = process.env.REACT_APP_CRIMES_THEME_ID ?? 'crimes';

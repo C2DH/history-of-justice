@@ -40,7 +40,11 @@
       "inconnu": "Unknown",
       "uncertain": "Uncertain",
       "unknown": "Unknown",
-      "end of 19th century": "End of 19th century"
+      "end of 19th century": "End of 19th century",
+
+      "explore": "Explore",
+      "oldest first": "Oldest first",
+      "newest first": "Newest first"
     }
   },
   "fr-FR": {
@@ -85,7 +89,11 @@
       "inconnu": "Inconnu",
       "uncertain": "Incertain",
       "unknown": "Inconnu",
-      "end of 19th century": "Fin du 19ème siècle"
+      "end of 19th century": "Fin du 19ème siècle",
+
+      "explore": "Explorer",
+      "oldest first": "Plus anciens d'abord",
+      "newest first": "Plus récent d'abord"
     }
   }
 }

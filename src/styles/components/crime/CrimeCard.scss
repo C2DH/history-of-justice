@@ -1,0 +1,38 @@
+.CrimeCard {
+  font-size: 2rem;
+  margin: 1rem 0;
+
+  .wrapper {
+    width: 300px;
+    height: 500px;
+    background-color: var(--bs-gray-400);
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    position: relative;
+
+    h3 {
+      font-size: 2rem;
+      font-weight: normal;
+    }
+
+    button {
+      font-size: 1rem;
+      text-transform: uppercase;
+      background-color: var(--bs-gray-500);
+      border: none;
+      width: 92px;
+      height: 92px;
+      border-radius: 46px;
+      transition: all 0.5s;
+      position: absolute;
+      bottom: 1.50rem;
+      left: 50%;
+      margin-left: -46px;
+
+      &:hover {
+        background-color: var(--bs-gray-600);
+        color: var(--bs-gray-400);
+      }
+    }
+  }
+}

@@ -1,16 +1,13 @@
-.Collection {
+.CrimesAndTrials {
 
   background-color: var(--bs-gray-200);
   height: 100%;
-  overflow-y: scroll;
 
   .position-sticky {
     z-index: 1;
     top: 0;
-    position: sticky;
     background-color: var(--bs-gray-200);
     margin-left: 0;
     padding: 1rem 0;
   }
-
 }

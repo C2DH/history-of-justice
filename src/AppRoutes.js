@@ -26,6 +26,7 @@ import {
 /* Pages */
 const Home = lazy(() => import('./pages/Home'));
 const Story = lazy(() => import('./pages/Story'));
+const CrimesAndTrials = lazy(() => import('./pages/CrimesAndTrials'));
 const Collection = lazy(() => import('./pages/Collection'));
 const Media = lazy(() => import('./pages/Media'));
 const About = lazy(() => import('./pages/About'));
@@ -91,7 +92,7 @@ const LangRoutes = _ => (
         </Route>
       </Route>
       <Route path={MagistrateJobRoute.to} element={<About />} />
-      <Route path={CrimesAndTrialsRoute.to} element={<About />} />
+      <Route path={CrimesAndTrialsRoute.to} element={<CrimesAndTrials />} />
       <Route path={CollectionRoute.to} element={<Collection />}>
         <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
       </Route>
