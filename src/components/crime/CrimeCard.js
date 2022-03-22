@@ -1,24 +1,50 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+
+import CrimeContent from './CrimeContent';
 
 import '../../styles/components/crime/CrimeCard.scss';
 
 
-const CrimeCard = ({ crime = {} }) => {
+const CrimeCard = ({
+  crime   = {},
+  width   = 420,
+  height,
+  open    = false,
+  onNextCard,
+  onPrevCard
+}) => {
 
   const { t } = useTranslation();
 
   return (
-    <Col className="CrimeCard" xs="auto">
-      <div className="wrapper">
+    <div className="CrimeCard" style={{ width: `${width}px` }}>
+      <div className={`slide ${open ? 'open' : ''}`} style={height && { height: `${height}px` }}>
 
         <div className="year">{crime.data.abstract}</div>
-        <h3>{crime.data.title}</h3>
+        {!open &&
+          <React.Fragment>
+            <h3>{crime.data.title}</h3>
 
-        <button>{t('explore')}</button>
+            <Link to={crime.slug} className="explore-button">
+              {t('explore')}
+            </Link>
+          </React.Fragment>
+        }
+
+        {open &&
+          <CrimeContent
+            crimeId             = {crime.id}
+            onSlideAfterEnd     = {onNextCard}
+            onSlideBeforeStart  = {onPrevCard}
+          />
+        }
       </div>
-    </Col>
+      {open &&
+        <h3 className="outside">{crime.data.title}</h3>
+      }
+    </div>
   );
 }
 

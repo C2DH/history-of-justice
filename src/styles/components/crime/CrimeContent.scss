@@ -1,0 +1,34 @@
+.CrimeContent {
+
+  flex: 1 1 auto;
+  margin: 1rem -1.25rem;
+  overflow: hidden;
+
+  .navigation {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.25rem;
+
+    svg {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .tile-bar {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+
+    .tile {
+      height: 4px;
+      background-color: var(--bs-gray-200);
+      flex: 1 1 auto;
+
+      &.active {
+        background-color: var(--bs-gray-500);
+      }
+    }
+  }
+}

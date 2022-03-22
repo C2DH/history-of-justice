@@ -1,0 +1,13 @@
+.CrimeModule {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1.25rem;
+  user-select: none;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    pointer-events: none;
+  }
+}
