@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { find } from 'lodash';
 
 import ScrollContainer from '../components/ScrollContainer';
-import { StoryMenu, Chapter } from '../components/story';
+import { StoryMenu, StoryChapter } from '../components/story';
 import { useThemes } from '../logic/miller';
 
 import '../styles/pages/Story.scss';
@@ -40,7 +40,7 @@ const Story = () => {
         <StoryMenu themes={themes} />
 
         {theme?.data.chapters?.map((chapterId, i) =>
-          <Chapter
+          <StoryChapter
             id    = {chapterId}
             index = {i}
             key   = {chapterId.toString()}

@@ -3,14 +3,14 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useStory } from '@c2dh/react-miller';
 import { toRoman } from 'roman-numerals';
 
-import Module from './Module.js';
+import StoryModule from './StoryModule.js';
 
-import '../../styles/components/story/Chapter.scss';
+import '../../styles/components/story/StoryChapter.scss';
 
 
-const Chapter = ({ id, index }) => {
+const StoryChapter = ({ id, index }) => {
 
-  const [ chapter ] = useStory(id, { suspense: false, keepPreviousData: true });
+  const [ chapter ] = useStory(id);
 
   return (
     <Container className="Chapter">
@@ -26,7 +26,7 @@ const Chapter = ({ id, index }) => {
       }
 
       {chapter?.contents.modules.map((module, i) =>
-        <Module
+        <StoryModule
           module    = {module}
           documents = {chapter.documents}
           index     = {i}
@@ -37,4 +37,4 @@ const Chapter = ({ id, index }) => {
   );
 }
 
-export default Chapter;
+export default StoryChapter;

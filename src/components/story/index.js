@@ -1,4 +1,4 @@
 import StoryMenu from './StoryMenu';
-import Chapter from './Chapter';
+import StoryChapter from './StoryChapter';
 
-export { StoryMenu, Chapter };
+export { StoryMenu, StoryChapter };

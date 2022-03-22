@@ -5,10 +5,10 @@ import { find } from 'lodash';
 
 import MediaCard from './MediaCard';
 
-import '../../styles/components/story/Module.scss';
+import '../../styles/components/story/StoryModule.scss';
 
 
-const Module = ({
+const StoryModule = ({
   module,
   documents,
   index = 0
@@ -17,7 +17,7 @@ const Module = ({
   const content = module.object || module.gallery;
 
   return (
-    <Row className="Module gx-5">
+    <Row className="StoryModule gx-5">
       <Col md={7}>
         <ReactMarkdown>
           {module.text.content}
@@ -43,4 +43,4 @@ const Module = ({
   );
 }
 
-export default Module;
+export default StoryModule;
