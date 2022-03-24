@@ -1,17 +1,13 @@
-import React, { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import React from 'react';
 
-import AppRouteLoading from './pages/AppRouteLoading';
 import Header from './components/Header';
 
 
-const Layout = _ => (
+const Layout = ({ children }) => (
   <React.Fragment>
     <Header />
     <main className="h-100 position-relative">
-      <Suspense fallback={<AppRouteLoading/>}>
-        <Outlet />
-      </Suspense>
+        {children}
     </main>
   </React.Fragment>
 );

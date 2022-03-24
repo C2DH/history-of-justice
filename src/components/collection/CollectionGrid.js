@@ -54,7 +54,7 @@ const CollectionGrid = ({ items, canLoadMore=false, loadMore }) => {
               {height &&
                 <Grid
                   autoHeight
-                  className         = "mx-auto"
+                  className         = "mx-auto pb-5"
                   cellRenderer      = {cellRenderer}
                   columnCount       = {colCount}
                   height            = {height}

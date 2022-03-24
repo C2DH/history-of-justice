@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { truncate } from 'lodash';
 
+import { LinkModal } from '../../logic/modal';
 import { MediaRoute } from '../../constants';
 
 import '../../styles/components/collection/CollectionCard.scss';
@@ -12,7 +12,11 @@ const TRUNCATE_OPTIONS = {
 }
 
 const CollectionCard = ({ doc }) => (
-  <Link className="CollectionCard" to={`${MediaRoute.to}/${doc.slug}`}>
+  <LinkModal
+    className     = "CollectionCard"
+    to            = {`../${MediaRoute.to}/${doc.slug}`}
+    useBackground
+  >
     <div className="picture">
       <div>
         <img src={doc.data.resolutions?.thumbnail.url} alt={doc.title} />
@@ -24,7 +28,7 @@ const CollectionCard = ({ doc }) => (
         <span> (p. {doc.data.index})</span>
       }
     </div>
-  </Link>
+  </LinkModal>
 );
 
 export default CollectionCard;

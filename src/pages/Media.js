@@ -4,8 +4,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import { useDocument } from '@c2dh/react-miller';
 
+import { useModal } from '../logic/modal';
 import { ImageViewer, PDFViewer } from '../components/Viewer';
 import { useDate } from '../hooks';
+import { CollectionRoute } from '../constants';
 
 import { ReactComponent as BackIcon } from '../images/icons/back.svg';
 import '../styles/pages/Media.scss';
@@ -13,6 +15,7 @@ import '../styles/pages/Media.scss';
 
 const Media = () => {
 
+  const { exitLink }  = useModal();
   const { t }         = useTranslation();
   const { mediaSlug } = useParams();
   const [ media ]     = useDocument(mediaSlug);
@@ -22,7 +25,7 @@ const Media = () => {
     <Container fluid className="Media">
       <Row className="h-100 content">
         <Col md={4} className="metadata mb-3">
-          <Link to=".." className="back-icon">
+          <Link to={exitLink || `../${CollectionRoute.to}`} className="back-icon">
             <BackIcon />
           </Link>
             <h1>

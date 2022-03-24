@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import Carousel from 'react-spring-3d-carousel';
 import { config } from 'react-spring';
 import { findIndex } from 'lodash';
 
 import { CrimeCard } from '../components/crime';
+import { useModal } from '../logic/modal';
 import { useCrimes } from '../logic/miller';
 
 import { ReactComponent as CloseIcon } from '../images/icons/close.svg';
@@ -18,7 +19,7 @@ const Crime = () => {
   const [ activeSlide, setActiveSlide ] = useState(0);
   const { crimeSlug }                   = useParams();
   const [ crimes ]                      = useCrimes();
-  const navigate                        = useNavigate();
+  const { exitLink, navigate }          = useModal();
 
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const Crime = () => {
 
   return (
     <Container fluid className="Crime">
-      <Link to=".." className="close-icon">
+      <Link to={exitLink || '..'} className="close-icon">
         <CloseIcon />
       </Link>
 

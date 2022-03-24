@@ -1,4 +1,4 @@
-import React, { lazy, useEffect } from 'react';
+import React, { lazy, useEffect, Suspense } from 'react';
 import ReactGA from 'react-ga';
 import { QueryParamProvider } from 'use-query-params';
 import {
@@ -10,8 +10,10 @@ import {
 } from "react-router-dom";
 
 import Layout from './Layout';
+import { useModal } from './logic/modal';
 import { LanguageCodes } from './constants';
 import { useLanguage } from './logic/language';
+import AppRouteLoading from './pages/AppRouteLoading';
 
 import {
   HistoryOfJusticeSystemRoute,
@@ -82,29 +84,41 @@ const RouteAdapter = ({ children }) => {
 
 
 /* Pages routing by language */
-const LangRoutes = _ => (
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path={HistoryOfJusticeSystemRoute.to}>
-        <Route index element={<Navigate to="la-naissance-du-systeme-judiciaire-contemporain-au-19e-siecle" />} />
-        <Route path=":storySlug" element={<Story />}>
+const LangRoutes = () => {
+
+  const location                = useLocation();
+  const { backgroundLocation }  = useModal();
+
+  return (
+    <Layout>
+      <Suspense fallback={<AppRouteLoading/>}>
+        <Routes location={backgroundLocation || location}>
+          <Route index element={<Home />} />
+          <Route path={HistoryOfJusticeSystemRoute.to}>
+            <Route index element={<Navigate to="la-naissance-du-systeme-judiciaire-contemporain-au-19e-siecle" />} />
+            <Route path=":storySlug" element={<Story />}>
+            </Route>
+          </Route>
+          <Route path={MagistrateJobRoute.to} element={<About />} />
+          <Route path={CrimesAndTrialsRoute.to} element={<CrimesAndTrials />}>
+            <Route path=":crimeSlug" element={<Crime />} />
+          </Route>
+          <Route path={CollectionRoute.to} element={<Collection />} />
           <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
-        </Route>
-      </Route>
-      <Route path={MagistrateJobRoute.to} element={<About />} />
-      <Route path={CrimesAndTrialsRoute.to} element={<CrimesAndTrials />}>
-        <Route path=":crimeSlug" element={<Crime />} />
-      </Route>
-      <Route path={CollectionRoute.to} element={<Collection />}>
-        <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
-      </Route>
-      <Route path={AboutRoute.to} element={<About />} />
-      <Route path={TermsOfUseRoute.to} element={<TermsOfUse />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
-  </Routes>
-);
+          <Route path={AboutRoute.to} element={<About />} />
+          <Route path={TermsOfUseRoute.to} element={<TermsOfUse />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        {backgroundLocation &&
+          <Routes>
+            <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
+          </Routes>
+        }
+      </Suspense>
+    </Layout>
+  );
+}
 
 
 const AppRoutes = ({ enableGA=false }) => {

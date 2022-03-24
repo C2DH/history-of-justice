@@ -3,7 +3,7 @@ export const HistoryOfJusticeSystemRoute = { to:'histoire-organisation-judiciair
 export const MagistrateJobRoute = { to:'magistrate-job', label: 'navigation.magistrate-job'}
 export const CrimesAndTrialsRoute = { to:'crimes-and-trials', label: 'navigation.crimes-and-trials'}
 export const CollectionRoute = { to: 'collection', label: 'navigation.collection' }
-export const MediaRoute = { to: 'media', label: 'navigation.media' }
+export const MediaRoute = { to: 'collection/media', label: 'navigation.media' }
 export const AboutRoute = { to: 'about', label: 'navigation.about' }
 
 export const TermsOfUseRoute = { to:'terms-of-use', label: 'navigation.terms-of-use'}

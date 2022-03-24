@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
+import { LinkModal } from '../../logic/modal';
 import CrimeContent from './CrimeContent';
 
 import '../../styles/components/crime/CrimeCard.scss';
@@ -27,9 +27,9 @@ const CrimeCard = ({
           <React.Fragment>
             <h3>{crime.data.title}</h3>
 
-            <Link to={crime.slug} className="explore-button">
+            <LinkModal to={crime.slug} className="explore-button">
               {t('explore')}
-            </Link>
+            </LinkModal>
           </React.Fragment>
         }
 
