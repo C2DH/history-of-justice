@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.MagistrateJob {
+
+  background-color: var(--bs-gray-200);
+  height: 100%;
+  padding-bottom: 5rem;
+
+  .position-sticky {
+    @include media-breakpoint-up(sm) {
+      z-index: 1;
+      top: 0;
+    }
+    background-color: var(--bs-gray-200);
+    margin-left: 0;
+    padding: 1rem 0;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.75rem 0;
+    overflow: hidden;
+  }
+}

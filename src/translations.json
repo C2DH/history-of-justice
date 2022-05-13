@@ -44,7 +44,11 @@
 
       "explore": "Explore",
       "oldest first": "Oldest first",
-      "newest first": "Newest first"
+      "newest first": "Newest first",
+
+      "sort by": "Sort by",
+      "interviewee": "Interviewee",
+      "topic": "Topic"
     }
   },
   "fr-FR": {
@@ -93,7 +97,11 @@
 
       "explore": "Explorer",
       "oldest first": "Plus anciens d'abord",
-      "newest first": "Plus récent d'abord"
+      "newest first": "Plus récent d'abord",
+
+      "sort by": "Trier par",
+      "interviewee": "Interviewé",
+      "topic": "Thème"
     }
   }
 }

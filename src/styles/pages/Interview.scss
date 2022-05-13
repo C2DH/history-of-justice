@@ -1,0 +1,22 @@
+.Interview {
+
+  position: absolute;
+  background-color: var(--bs-gray-800);
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+  .close-icon {
+    position: absolute;
+    right: 4rem;
+    top: 1.5rem;
+    z-index: 10;
+  }
+
+  .player {
+    flex: 1 0 auto;
+  }
+}

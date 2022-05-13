@@ -1,0 +1,28 @@
+.InterviewOrderByFilter {
+
+  text-align: center;
+
+  > label {
+    margin-left: 1rem;
+  }
+
+  .orderByField {
+    padding-left: 0;
+
+    input {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      float: none;
+    }
+
+    label {
+      color: var(--bs-gray-500);
+
+      &.active {
+        pointer-events: none;
+        color: var(--bs-dark);
+      }
+    }
+
+  }
+}

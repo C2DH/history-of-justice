@@ -5,13 +5,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 export const LinkModal = ({
   children,
   useBackground = false,
+  state = {},
   ...props
 }) => {
 
   const location = useLocation();
 
   return (
-    <Link {...props} state={{ modalLocation: location, useBackground: useBackground }}>
+    <Link {...props} state={{ ...state, modalLocation: location, useBackground: useBackground }}>
       {children}
     </Link>
   );
@@ -27,6 +28,7 @@ export const useModal = () => {
     backgroundLocation: state?.useBackground ? state?.modalLocation : undefined,
     exitLink: state?.modalLocation,
     isModal: !!state?.modalLocation,
-    navigate: to => navigate(to, { state })
+    navigate: to => navigate(to, { state }),
+    state
   }
 }

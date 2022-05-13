@@ -1,0 +1,73 @@
+.InterviewCard {
+
+  padding-top: 0.5rem;
+  padding-right: 6px;
+  position: relative;
+  flex: 1 0 auto;
+  opacity: 0.3;
+
+  figure {
+    img {
+      height: 110px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    figcaption {
+      font-size: 0.75rem;
+      line-height: 1.4em;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 4rem;
+      text-align: center;
+      margin-top: 5px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: no-repeat center url(../../../images/icons/play.svg);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  }
+
+  &.active {
+    opacity: 1;
+  }
+
+  &:hover {
+    figure {
+      figcaption {
+        opacity: 1;
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.last {
+    margin-right: 1rem;
+    &::after {
+      left: 0;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    right: 6px;
+    border-top: 1px solid #C4C4C4;
+  }
+}

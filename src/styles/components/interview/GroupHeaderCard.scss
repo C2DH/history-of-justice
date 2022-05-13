@@ -1,0 +1,21 @@
+.GroupHeaderCard {
+
+  padding-top: 0.5rem;
+  padding-right: 6px;
+  position: relative;
+  width: 200px;
+
+  .role {
+    font-size: 0.75rem;
+    color: var(--bs-gray-500);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 6px;
+    border-top: 1px solid #C4C4C4;
+  }
+}

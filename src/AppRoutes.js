@@ -28,6 +28,8 @@ import {
 /* Pages */
 const Home = lazy(() => import('./pages/Home'));
 const Story = lazy(() => import('./pages/Story'));
+const MagistrateJob = lazy(() => import('./pages/MagistrateJob'));
+const Interview = lazy(() => import('./pages/Interview'));
 const CrimesAndTrials = lazy(() => import('./pages/CrimesAndTrials'));
 const Crime = lazy(() => import('./pages/Crime'));
 const Collection = lazy(() => import('./pages/Collection'));
@@ -99,7 +101,9 @@ const LangRoutes = () => {
             <Route path=":storySlug" element={<Story />}>
             </Route>
           </Route>
-          <Route path={MagistrateJobRoute.to} element={<About />} />
+          <Route path={MagistrateJobRoute.to} element={<MagistrateJob />}>
+            <Route path=":interviewSlug" element={<Interview />} />
+          </Route>
           <Route path={CrimesAndTrialsRoute.to} element={<CrimesAndTrials />}>
             <Route path=":crimeSlug" element={<Crime />} />
           </Route>

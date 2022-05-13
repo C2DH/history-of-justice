@@ -18,11 +18,10 @@ const Crimes = () => {
   const [order, setOrder]           = useState(queryOrder);
   const [ crimes ]                  = useCrimes(order);
 
-
+  //  Not change the order when the modal is opened
   useEffect(() => {
     if(!isModal) setOrder(queryOrder);
   }, [queryOrder, isModal])
-
 
   return (
     <React.Fragment>
