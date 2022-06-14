@@ -1,0 +1,22 @@
+.Slide {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 50% 50%;
+  user-select: none;
+
+  // .slide-card {
+  //   position: relative;
+  //   width: 90vw;
+  //   height: 80%;
+  //   font-size: 35px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   transform-origin: 50% 50%;
+  //   border-radius: 8px;
+  // }
+}

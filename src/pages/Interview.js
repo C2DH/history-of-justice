@@ -7,6 +7,7 @@ import { find, findIndex } from 'lodash';
 import { TopicSlider, SpeakerSlider } from '../components/interview';
 import { useModal } from '../logic/modal';
 import { useInterview, useInterviews } from '../logic/miller';
+import { WithBreakpoint } from '../logic/breakpoint';
 
 import { ReactComponent as CloseIcon } from '../images/icons/close.svg';
 
@@ -44,25 +45,27 @@ const Interview = () => {
 
 
   return (
-    <Container fluid className="Interview">
-      <Link to={exitLink || '..'} className="close-icon">
-        <CloseIcon />
-      </Link>
+    <WithBreakpoint>
+      <Container fluid className="Interview">
+        <Link to={exitLink || '..'} className="close-icon">
+          <CloseIcon />
+        </Link>
 
-      <TopicSlider activeId={interview?.topic.slug} onSelect={topic_selectHandler} />
-      <div className="player">
-        <Player
-          url       = {interview?.data.url}
-          playing   = {true}
-          controls  = {true}
-          width     = "100%"
-          height    = "100%"
-          onEnded   = {player_onEnd}
-        />
-      </div>
-      <SpeakerSlider activeId={interview?.speaker.slug} onSelect={speaker_selectHandler} />
+        <TopicSlider activeId={interview?.topic.slug} onSelect={topic_selectHandler} />
+        <div className="player">
+          <Player
+            url       = {interview?.data.url}
+            playing   = {true}
+            controls  = {true}
+            width     = "100%"
+            height    = "100%"
+            onEnded   = {player_onEnd}
+          />
+        </div>
+        <SpeakerSlider activeId={interview?.speaker.slug} onSelect={speaker_selectHandler} />
 
-    </Container>
+      </Container>
+    </WithBreakpoint>
   );
 }
 

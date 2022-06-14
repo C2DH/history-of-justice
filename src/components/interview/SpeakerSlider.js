@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Carousel from 'react-spring-3d-carousel';
+import React, { useEffect, useState, useMemo } from 'react';
+import Carousel from '../3dcarousel/Carousel';
 import { findIndex } from 'lodash';
 
 import { useSpeakers } from '../../logic/miller';
+import { useBreakpoint } from '../../logic/breakpoint';
 
 import '../../styles/components/interview/SpeakerSlider.scss';
 
@@ -11,6 +12,7 @@ const SpeakerSlider = ({ activeId, onSelect }) => {
 
   const [ activeIndex, setActiveIndex ] = useState(0);
   const [ speakers ]                    = useSpeakers();
+  const { isUpMD }                      = useBreakpoint();
 
 
   useEffect(() => {
@@ -18,22 +20,30 @@ const SpeakerSlider = ({ activeId, onSelect }) => {
   }, [activeId, speakers]);
 
 
-  const slides = speakers.map((speaker, i) => ({
+  const carousel_slideHandler = index => {
+    onSelect(speakers[index].slug);
+  }
+
+
+  const slides = useMemo(() => speakers.map((speaker, i) => ({
     key: speaker.slug,
-    content: <div id={speaker.slug} className="speaker">
+    content: <div className="speaker">
                 <div>{speaker.data.title}</div>
                 <div className="role">{speaker.data.role} ({speaker.data.year})</div>
-            </div>,
-    onClick: () => onSelect(speaker.slug)
-  }));
+            </div>
+  })), [speakers]);
 
 
   return (
     <div className="SpeakerSlider">
       <Carousel
-        slides          = {slides}
-        goToSlide       = {activeIndex}
-        offsetRadius    = {2}
+        slides        = {slides}
+        goToSlide     = {activeIndex}
+        offsetRadius  = {2}
+        shiftDistance = {isUpMD ? 400 : 280}
+        scaleFactor   = {0.9}
+        opacityFactor = {0.3}
+        onSlide       = {carousel_slideHandler}
       />
     </div>
   );
