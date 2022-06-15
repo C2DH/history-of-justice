@@ -45,14 +45,22 @@ const Slide = ({
     `${offsetRadius === 0 ? 50 : 50 + (offsetFromCenter * 50) / offsetRadius}%`
 
 
-  const bind = useDrag(({ down, delta, movement, last }) => {
+  const bind = useDrag(({
+    down,
+    movement: [mx],
+    swipe: [swipeX],
+    last
+  }) => {
 
     if(last && isDragging.current)
       setTimeout(() => isDragging.current = false, 200);
 
-    if(offsetFromCenter === 0 && down && Math.abs(movement[0]) > 50) {
+    if(swipeX)
+      moveSlide(swipeX);
+
+    if(offsetFromCenter === 0 && down && Math.abs(mx) > 50) {
       isDragging.current = true;
-      moveSlide(movement[0] > 0 ? 1 : -1);
+      moveSlide(mx > 0 ? 1 : -1);
     }
   });
 
