@@ -48,20 +48,18 @@ const Slide = ({
   const bind = useDrag(({
     down,
     movement: [mx],
-    swipe: [swipeX],
     last
   }) => {
 
     if(last && isDragging.current)
-      setTimeout(() => isDragging.current = false, 200);
+      setTimeout(() => isDragging.current = false, 2000);
 
-    if(swipeX)
-      moveSlide(swipeX);
-
-    if(offsetFromCenter === 0 && down && Math.abs(mx) > 50) {
+    if(offsetFromCenter === 0 && down && Math.abs(mx) >= 10) {
       isDragging.current = true;
       moveSlide(mx > 0 ? 1 : -1);
     }
+  }, {
+    enabled: offsetFromCenter === 0
   });
 
 
