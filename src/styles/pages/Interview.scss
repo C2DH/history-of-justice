@@ -1,3 +1,7 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 .Interview {
 
   position: absolute;
@@ -11,9 +15,17 @@
 
   .close-icon {
     position: absolute;
-    right: 4rem;
-    top: 1.5rem;
+    right: 1rem;
+    top: 1rem;
     z-index: 10;
+
+    @include media-breakpoint-up(sm) {
+      right: 2rem;
+    }
+
+    @include media-breakpoint-up(md) {
+      right: 3rem;
+    }
   }
 
   .player {

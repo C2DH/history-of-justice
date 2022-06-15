@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Player from 'react-player';
 import { find, findIndex } from 'lodash';
+import debounce from 'debounce';
 
 import { TopicSlider, SpeakerSlider } from '../components/interview';
 import { useModal } from '../logic/modal';
@@ -26,15 +27,16 @@ const Interview = () => {
   } = useModal();
   const playlist          = state?.playlist || [];
 
+  const loadInterview = debounce((slug) => navigate(`../${slug}`), 1000);
 
   const topic_selectHandler = slug => {
     const newInterview = find(interviews, item => item.topic.slug === slug && item.speaker.slug === interview.speaker.slug);
-    if(newInterview) navigate(`../${newInterview.slug}`);
+    if(newInterview) loadInterview(newInterview.slug);
   }
 
   const speaker_selectHandler = slug => {
     const newInterview = find(interviews, item => item.speaker.slug === slug && item.topic.slug === interview.topic.slug);
-    if(newInterview) navigate(`../${newInterview.slug}`);
+    if(newInterview) loadInterview(newInterview.slug);
   }
 
   const player_onEnd = () => {

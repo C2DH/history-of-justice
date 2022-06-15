@@ -54,7 +54,7 @@ const Slide = ({
     if(last && isDragging.current)
       setTimeout(() => isDragging.current = false, 2000);
 
-    if(offsetFromCenter === 0 && down && Math.abs(mx) >= 10) {
+    if(offsetFromCenter === 0 && down && Math.abs(mx) >= 5) {
       isDragging.current = true;
       moveSlide(mx > 0 ? 1 : -1);
     }

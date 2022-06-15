@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        className         = "Header px-5"
+        className         = "Header px-3 px-sm-5"
         fixed             = "top"
         expand            = {false}
         bg                = "light"
