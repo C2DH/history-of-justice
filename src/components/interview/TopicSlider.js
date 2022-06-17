@@ -8,10 +8,14 @@ import { useBreakpoint } from '../../logic/breakpoint';
 import '../../styles/components/interview/TopicSlider.scss';
 
 
-const TopicSlider = ({ activeId, onSelect }) => {
+const TopicSlider = ({
+  activeId,
+  filterId,
+  onSelect
+}) => {
 
   const [ activeIndex, setActiveIndex ] = useState(0);
-  const [ topics ]                      = useTopics();
+  const [ topics ]                      = useTopics(filterId);
   const { isUpMD }                      = useBreakpoint();
 
 

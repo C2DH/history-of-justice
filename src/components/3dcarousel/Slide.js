@@ -41,7 +41,7 @@ const Slide = ({
   }
 
   const left = shiftDistance ?
-    `calc(50% - ${shiftDistance * offsetFromCenter}px)` :
+    `calc(50% + ${shiftDistance * offsetFromCenter}px)` :
     `${offsetRadius === 0 ? 50 : 50 + (offsetFromCenter * 50) / offsetRadius}%`
 
 

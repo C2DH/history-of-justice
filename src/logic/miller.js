@@ -10,7 +10,7 @@ import {
   useDocumentsFacets
 } from '@c2dh/react-miller';
 import { QueryClient } from 'react-query'
-import { find, pull, orderBy, sortBy } from 'lodash';
+import { find, findIndex, pull, orderBy, sortBy } from 'lodash';
 
 import { lang2Field } from '../utils';
 import {
@@ -98,8 +98,47 @@ const useInterviewsTaxonomy = (vocabulary) => {
 }
 
 
-export const useTopics = () => useInterviewsTaxonomy(TOPIC_GROUP);
-export const useSpeakers = () => useInterviewsTaxonomy(SPEAKER_GROUP);
+/**
+ * Hook to get topics
+ * The list is filtered to keep only topics with an available interview for the specified speaker
+ * @param   speakerId   Id of the speaker used to filter the topic list
+ */
+export const useTopics = speakerId => {
+
+  const [ interviews ]     = useInterviews();
+  const [ topics, meta ]   = useInterviewsTaxonomy(TOPIC_GROUP);
+
+  // Keep only topics with an available interview for the speaker
+  const filteredTopics = useMemo(() => topics.filter(
+    topic => findIndex(interviews,
+      item => item.speaker.slug === speakerId && item.topic.slug === topic.slug
+    ) !== -1
+  ), [interviews, topics, speakerId]);
+
+  return [filteredTopics, meta];
+}
+
+
+/**
+ * Hook to get speakers
+ * The list is filtered to keep only speakers with an available interview for the specified topic
+ * @param   topicId   Id of the topic used to filter the speaker list
+ */
+export const useSpeakers = topicId => {
+
+  const [ interviews ]      = useInterviews();
+  const [ speakers, meta ]  = useInterviewsTaxonomy(SPEAKER_GROUP);
+
+  // Keep only speakers with an available interview for the topic
+  const filteredSpeakers = useMemo(() => speakers.filter(
+    speaker => findIndex(interviews,
+      item => item.topic.slug === topicId && item.speaker.slug === speaker.slug
+    ) !== -1
+  ), [interviews, speakers, topicId]);
+
+  return [filteredSpeakers, meta];
+}
+
 
 /**
  * Hook to get an interview by its id
@@ -116,6 +155,7 @@ export const useInterview = id => {
 
   return [interview, meta];
 }
+
 
 /**
  * Hook to get the list of interviews with speaker and topic data

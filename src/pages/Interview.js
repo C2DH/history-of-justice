@@ -42,7 +42,7 @@ const Interview = () => {
   const player_onEnd = () => {
     const index = findIndex(playlist, interview);
     if(index !== -1 && index < playlist.length - 1)
-      navigate(`../${playlist[index + 1].slug}`);
+      loadInterview(playlist[index + 1].slug);
   }
 
 
@@ -53,7 +53,11 @@ const Interview = () => {
           <CloseIcon />
         </Link>
 
-        <TopicSlider activeId={interview?.topic.slug} onSelect={topic_selectHandler} />
+        <TopicSlider
+          activeId  = {interview?.topic.slug}
+          filterId  = {interview?.speaker.slug}
+          onSelect  = {topic_selectHandler}
+        />
         <div className="player">
           <Player
             url       = {interview?.data.url}
@@ -64,7 +68,11 @@ const Interview = () => {
             onEnded   = {player_onEnd}
           />
         </div>
-        <SpeakerSlider activeId={interview?.speaker.slug} onSelect={speaker_selectHandler} />
+        <SpeakerSlider
+          activeId  = {interview?.speaker.slug}
+          filterId  = {interview?.topic.slug}
+          onSelect  = {speaker_selectHandler}
+        />
 
       </Container>
     </WithBreakpoint>

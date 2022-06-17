@@ -8,10 +8,14 @@ import { useBreakpoint } from '../../logic/breakpoint';
 import '../../styles/components/interview/SpeakerSlider.scss';
 
 
-const SpeakerSlider = ({ activeId, onSelect }) => {
+const SpeakerSlider = ({
+  activeId,
+  filterId,
+  onSelect
+}) => {
 
   const [ activeIndex, setActiveIndex ] = useState(0);
-  const [ speakers ]                    = useSpeakers();
+  const [ speakers ]                    = useSpeakers(filterId);
   const { isUpMD }                      = useBreakpoint();
 
 
