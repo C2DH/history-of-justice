@@ -15,15 +15,18 @@ import '../styles/pages/Media.scss';
 
 const Media = () => {
 
-  const { exitLink }  = useModal();
-  const { t }         = useTranslation();
-  const { mediaSlug } = useParams();
-  const [ media ]     = useDocument(mediaSlug);
-  const { parseDate } = useDate();
+  const { exitLink, state }   = useModal();
+  const darkMode              = state?.darkMode || false;
+  const { t }                 = useTranslation();
+  const { mediaSlug }         = useParams();
+  const [ media ]             = useDocument(mediaSlug);
+  const { parseDate }         = useDate();
+
+  console.log(darkMode);
 
   return (
-    <Container fluid className="Media">
-      <Row className="h-100 content">
+    <Container fluid className={`Media px-0 px-sm-3 pb-0 pb-sm-3 ${darkMode ? 'dark' : ''}`}>
+      <Row className="h-100 px-2 pt-5 px-md-4 pb-md-4 content">
         <Col md={4} className="metadata mb-3">
           <Link to={exitLink || `../${CollectionRoute.to}`} className="back-icon">
             <BackIcon />

@@ -16,7 +16,7 @@ const SpeakerSlider = ({
 
   const [ activeIndex, setActiveIndex ] = useState(0);
   const [ speakers ]                    = useSpeakers(filterId);
-  const { isUpMD }                      = useBreakpoint();
+  const { isMD }                        = useBreakpoint();
 
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const SpeakerSlider = ({
         slides        = {slides}
         goToSlide     = {activeIndex}
         offsetRadius  = {2}
-        shiftDistance = {isUpMD ? 400 : 280}
+        shiftDistance = {isMD ? 400 : 280}
         scaleFactor   = {0.9}
         opacityFactor = {0.3}
         onSlide       = {carousel_slideHandler}

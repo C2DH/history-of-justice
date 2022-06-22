@@ -3,13 +3,16 @@ import { BrowserRouter } from "react-router-dom";
 
 import { WithLanguage } from './logic/language';
 import { WithMiller } from './logic/miller';
+import { WithBreakpoint } from './logic/breakpoint';
 
 
 const App = () => (
   <BrowserRouter>
     <WithLanguage>
       <WithMiller>
-        <AppRoutes />
+        <WithBreakpoint>
+          <AppRoutes />
+        </WithBreakpoint>
       </WithMiller>
     </WithLanguage>
   </BrowserRouter>

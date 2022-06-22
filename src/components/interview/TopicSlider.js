@@ -16,7 +16,7 @@ const TopicSlider = ({
 
   const [ activeIndex, setActiveIndex ] = useState(0);
   const [ topics ]                      = useTopics(filterId);
-  const { isUpMD }                      = useBreakpoint();
+  const { isMD }                        = useBreakpoint();
 
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const TopicSlider = ({
         slides        = {slides}
         goToSlide     = {activeIndex}
         offsetRadius  = {1}
-        shiftDistance = {isUpMD ? 500 : 380}
+        shiftDistance = {isMD ? 500 : 380}
         scaleFactor   = {0.7}
         onSlide       = {carousel_slideHandler}
       />

@@ -1,6 +1,9 @@
 import React from 'react';
 import { find } from 'lodash';
 
+import { LinkModal } from '../../logic/modal';
+import { MediaRoute } from '../../constants';
+
 import '../../styles/components/crime/CrimeModule.scss';
 
 
@@ -14,7 +17,13 @@ const CrimeModule = ({ module, documents }) => {
   return (
     <div className="CrimeModule">
       {image &&
-        <img src={image.data.resolutions?.medium.url} alt={image.data.title} />
+        <LinkModal
+          to      = {`../../${MediaRoute.to}/${image.slug}`}
+          state   = {{darkMode: true}}
+          useBackground
+        >
+          <img src={image.data.resolutions?.medium.url} alt={image.data.title} />
+        </LinkModal>
       }
       {module?.text?.content}
     </div>

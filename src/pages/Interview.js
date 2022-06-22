@@ -8,7 +8,6 @@ import debounce from 'debounce';
 import { TopicSlider, SpeakerSlider } from '../components/interview';
 import { useModal } from '../logic/modal';
 import { useInterview, useInterviews } from '../logic/miller';
-import { WithBreakpoint } from '../logic/breakpoint';
 
 import { ReactComponent as CloseIcon } from '../images/icons/close.svg';
 
@@ -47,7 +46,6 @@ const Interview = () => {
 
 
   return (
-    <WithBreakpoint>
       <Container fluid className="Interview">
         <Link to={exitLink || '..'} className="close-icon">
           <CloseIcon />
@@ -75,7 +73,6 @@ const Interview = () => {
         />
 
       </Container>
-    </WithBreakpoint>
   );
 }
 

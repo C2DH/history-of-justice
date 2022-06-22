@@ -61,10 +61,10 @@ const useBreakpoint = _ => {
   }
 
   context.isXXL = context.size === SIZE_XXL;
-  context.isUpXL = context.isXXL || context.size === SIZE_XL;
-  context.isUpLG = context.isUpXL || context.size === SIZE_LG;
-  context.isUpMD = context.isUpLG || context.size === SIZE_MD;
-  context.isUpSM = context.isUpMD || context.size === SIZE_SM;
+  context.isXL = context.isXXL || context.size === SIZE_XL;
+  context.isLG = context.isXL || context.size === SIZE_LG;
+  context.isMD = context.isLG || context.size === SIZE_MD;
+  context.isSM = context.isMD || context.size === SIZE_SM;
 
   return context;
 }

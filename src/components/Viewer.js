@@ -1,8 +1,16 @@
 import React  from 'react';
 import { TransformWrapper, TransformComponent } from "@kokarn/react-zoom-pan-pinch";
 
+import { useBreakpoint } from '../logic/breakpoint';
 
-export const ImageViewer = ({ url, title }) => (
+
+export const ImageViewer = ({ url, title }) => {
+
+  const { isMD }  = useBreakpoint();
+
+  return (
+    <React.Fragment>
+    {isMD ?
   <TransformWrapper wheel={{ step: 0.1 }}>
     {({ zoomIn, zoomOut, centerView }) => (
 
@@ -18,7 +26,10 @@ export const ImageViewer = ({ url, title }) => (
       </React.Fragment>
     )}
   </TransformWrapper>
-);
+: <img src={url} alt={title} />}
+</React.Fragment>
+
+);}
 
 export const PDFViewer = ({ url }) => (
   <object width="100%" height="100%" type="application/pdf" data={url}>
