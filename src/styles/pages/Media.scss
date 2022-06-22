@@ -4,20 +4,25 @@
 
 .Media {
 
+  overflow-y: auto;
+  @include media-breakpoint-up(md) {
+    overflow-y: hidden;
+  }
+
   position: absolute;
   top: 0;
   height: 100%;
   width: 100%;
-//  padding: 0 1rem 1rem;
   margin: 0;
   z-index: 1;
+  background-color: var(--bs-light);
 
   .content {
-    //background-color: rgba(var(--gray-600-rgb), .12);
     background-color: var(--bs-gray-200);
-  //  padding: 3rem 2rem 2rem;
     margin: 0;
-    height: 100%;
+    @include media-breakpoint-up(md) {
+      height: 100%;
+    }
 
     .back-icon {
       position: absolute;
@@ -29,7 +34,6 @@
     }
 
     .metadata {
-
       h1 {
         @include font-size(2.25rem);
       }
@@ -94,6 +98,8 @@
   }
 
   &.dark {
+    background-color: transparent;
+
     .content {
       background-color: var(--bs-gray-400);
     }
