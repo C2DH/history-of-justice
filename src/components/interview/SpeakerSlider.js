@@ -2,8 +2,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Carousel from '../3dcarousel/Carousel';
 import { findIndex } from 'lodash';
 
-import { useSpeakers } from '../../logic/miller';
-import { useBreakpoint } from '../../logic/breakpoint';
+import { useSpeakers } from '../../hooks/miller';
+import { useMediaQueryContext } from '../../hooks/mediaQuery';
 
 import '../../styles/components/interview/SpeakerSlider.scss';
 
@@ -16,7 +16,7 @@ const SpeakerSlider = ({
 
   const [ activeIndex, setActiveIndex ] = useState(0);
   const [ speakers ]                    = useSpeakers(filterId);
-  const { isMD }                        = useBreakpoint();
+  const { isMobile }                    = useMediaQueryContext();
 
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const SpeakerSlider = ({
         slides        = {slides}
         goToSlide     = {activeIndex}
         offsetRadius  = {2}
-        shiftDistance = {isMD ? 400 : 280}
+        shiftDistance = {isMobile ? 280 : 400}
         scaleFactor   = {0.9}
         opacityFactor = {0.3}
         onSlide       = {carousel_slideHandler}

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
 
-import { useMedias, useMediaFacets } from '../logic/miller';
-import { useModal } from '../logic/modal';
+import { useMedias, useMediaFacets } from '../hooks/miller';
+import { useModal } from '../hooks/modal';
 import ScrollContainer from '../components/ScrollContainer';
 import {
   CollectionGrid,

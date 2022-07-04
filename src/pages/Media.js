@@ -4,9 +4,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import { useDocument } from '@c2dh/react-miller';
 
-import { useModal } from '../logic/modal';
+import { useModal } from '../hooks/modal';
 import { ImageViewer, PDFViewer } from '../components/viewer';
-import { useDate } from '../hooks';
+import { useDate } from '../hooks/date';
 import { CollectionRoute } from '../constants';
 
 import { ReactComponent as BackIcon } from '../images/icons/back.svg';

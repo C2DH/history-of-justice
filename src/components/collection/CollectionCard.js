@@ -1,7 +1,7 @@
 import React from 'react';
 import { truncate } from 'lodash';
 
-import { LinkModal } from '../../logic/modal';
+import { LinkModal } from '../../hooks/modal';
 import { MediaRoute } from '../../constants';
 
 import '../../styles/components/collection/CollectionCard.scss';

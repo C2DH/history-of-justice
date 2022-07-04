@@ -6,8 +6,8 @@ import { config } from 'react-spring';
 import { findIndex } from 'lodash';
 
 import { CrimeCard } from '../components/crime';
-import { useModal } from '../logic/modal';
-import { useCrimes } from '../logic/miller';
+import { useModal } from '../hooks/modal';
+import { useCrimes } from '../hooks/miller';
 
 import { ReactComponent as CloseIcon } from '../images/icons/close.svg';
 

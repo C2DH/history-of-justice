@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
 
 import { CrimeCard, CrimeOrderByFilter } from '../components/crime';
-import { useModal } from '../logic/modal';
-import { useCrimes } from '../logic/miller';
+import { useModal } from '../hooks/modal';
+import { useCrimes } from '../hooks/miller';
 import ScrollContainer from '../components/ScrollContainer';
 
 import '../styles/pages/CrimesAndTrials.scss';

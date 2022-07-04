@@ -32,6 +32,7 @@
     "react-virtualized": "^9.22.3",
     "roman-numerals": "^0.3.2",
     "sass": "^1.49.9",
+    "use-media": "^1.4.0",
     "use-query-params": "^1.2.3",
     "web-vitals": "^2.1.4"
   },

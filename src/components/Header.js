@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { PrimaryRoutes } from '../constants';
-import { useActiveRoute } from '../hooks';
+import { useActiveRoute } from '../hooks/route';
 
 import { ReactComponent as MenuIcon } from '../images/icons/menu.svg';
 import '../styles/components/Header.scss';

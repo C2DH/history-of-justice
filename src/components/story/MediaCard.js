@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import { LinkModal } from '../../logic/modal';
+import { LinkModal } from '../../hooks/modal';
 import { MediaRoute } from '../../constants';
 
 import '../../styles/components/story/MediaCard.scss';

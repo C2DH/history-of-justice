@@ -1,24 +1,28 @@
 import React, { useEffect, useRef }  from 'react';
 import { TransformWrapper, TransformComponent } from "@kokarn/react-zoom-pan-pinch";
 
-import { useBreakpoint } from '../../logic/breakpoint';
+import { useMediaQueryContext } from '../../hooks/mediaQuery';
 
 
 const ImageViewer = ({ url, title }) => {
 
-  const viewer    = useRef();
-  const { isMD }  = useBreakpoint();
+  const viewer        = useRef();
+  const { isMobile }  = useMediaQueryContext();
 
   useEffect(() => {
     viewer.current?.centerView(1);
-  }, [isMD]);
+  }, [isMobile]);
 
   return (
-    <TransformWrapper wheel={{ step: 0.1 }} ref={viewer} disabled={!isMD}>
+    <TransformWrapper
+      wheel     = {{ step: 0.1 }}
+      ref       = {viewer}
+      disabled  = {isMobile}
+    >
       {({ zoomIn, zoomOut, centerView }) => (
 
         <React.Fragment>
-          {isMD &&
+          {!isMobile &&
             <div className="tools">
               <button className="zoomIn" onClick={() => zoomIn()}>+</button>
               <button className="zoomOut" onClick={() => zoomOut()}>-</button>

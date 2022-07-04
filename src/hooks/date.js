@@ -1,14 +1,5 @@
-import { useLocation } from 'react-router-dom';
-import _ from 'lodash';
+import { useLanguage } from '../hooks/language';
 
-import { AllRoutes } from './constants';
-import { useLanguage } from './logic/language';
-
-
-export const useActiveRoute = () => {
-    const { pathname } = useLocation();
-    return _.find(AllRoutes, route => pathname.includes(route.to));
-}
 
 export const useDate = () => {
 

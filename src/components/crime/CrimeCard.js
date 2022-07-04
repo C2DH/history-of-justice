@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { LinkModal } from '../../logic/modal';
+import { LinkModal } from '../../hooks/modal';
 import CrimeContent from './CrimeContent';
 
 import '../../styles/components/crime/CrimeCard.scss';

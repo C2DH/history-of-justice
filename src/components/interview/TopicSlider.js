@@ -2,8 +2,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Carousel from '../3dcarousel/Carousel';
 import { findIndex } from 'lodash';
 
-import { useTopics } from '../../logic/miller';
-import { useBreakpoint } from '../../logic/breakpoint';
+import { useTopics } from '../../hooks/miller';
+import { useMediaQueryContext } from '../../hooks/mediaQuery';
 
 import '../../styles/components/interview/TopicSlider.scss';
 
@@ -16,7 +16,7 @@ const TopicSlider = ({
 
   const [ activeIndex, setActiveIndex ] = useState(0);
   const [ topics ]                      = useTopics(filterId);
-  const { isMD }                        = useBreakpoint();
+  const { isMobile }                    = useMediaQueryContext();
 
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const TopicSlider = ({
         slides        = {slides}
         goToSlide     = {activeIndex}
         offsetRadius  = {1}
-        shiftDistance = {isMD ? 500 : 380}
+        shiftDistance = {isMobile ? 380 : 500}
         scaleFactor   = {0.7}
         onSlide       = {carousel_slideHandler}
       />

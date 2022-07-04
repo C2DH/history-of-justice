@@ -14,15 +14,15 @@ const StoryChapter = ({ id, index }) => {
 
   return (
     <Container className="Chapter">
-      {chapter &&
-      <Row>
-        <Col md={12}>
-          <h2>Partie {toRoman(index + 1)} &ndash; {chapter?.data.title}</h2>
-          {chapter?.data.abstract &&
-            <p>{chapter.data.abstract}</p>
-          }
-        </Col>
-      </Row>
+      {chapter && index > 0 &&
+        <Row>
+          <Col md={12}>
+            <h2>Partie {toRoman(index)} &ndash; {chapter?.data.title}</h2>
+            {chapter?.data.abstract &&
+              <p>{chapter.data.abstract}</p>
+            }
+          </Col>
+        </Row>
       }
 
       {chapter?.contents.modules.map((module, i) =>

@@ -6839,6 +6839,7 @@ __metadata:
     react-virtualized: ^9.22.3
     roman-numerals: ^0.3.2
     sass: ^1.49.9
+    use-media: ^1.4.0
     use-query-params: ^1.2.3
     web-vitals: ^2.1.4
   languageName: unknown
@@ -13211,6 +13212,15 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"use-media@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "use-media@npm:1.4.0"
+  peerDependencies:
+    react: ^16.8.1
+  checksum: 658b10b530076208cc6295be8f9995a063e75cb49ffa510844447d543a730f910cdad33a2d824598f9a8cadd653942ef0e5c194b1ab048fd62cb802e86c4a821
   languageName: node
   linkType: hard
 

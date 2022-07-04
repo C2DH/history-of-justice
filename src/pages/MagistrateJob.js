@@ -3,9 +3,9 @@ import { Outlet } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
 
-import { useModal } from '../logic/modal';
+import { useModal } from '../hooks/modal';
 import ScrollContainer from '../components/ScrollContainer';
-import { useGroupedInterviews } from '../logic/miller';
+import { useGroupedInterviews } from '../hooks/miller';
 import {
   InterviewCard,
   GroupHeaderCard,

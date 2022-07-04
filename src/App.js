@@ -1,18 +1,18 @@
 import AppRoutes from './AppRoutes';
 import { BrowserRouter } from "react-router-dom";
 
-import { WithLanguage } from './logic/language';
-import { WithMiller } from './logic/miller';
-import { WithBreakpoint } from './logic/breakpoint';
+import { WithLanguage } from './hooks/language';
+import { WithMiller } from './hooks/miller';
+import { WithMediaQuery } from './hooks/mediaQuery';
 
 
 const App = () => (
   <BrowserRouter>
     <WithLanguage>
       <WithMiller>
-        <WithBreakpoint>
+        <WithMediaQuery>
           <AppRoutes />
-        </WithBreakpoint>
+        </WithMediaQuery>
       </WithMiller>
     </WithLanguage>
   </BrowserRouter>

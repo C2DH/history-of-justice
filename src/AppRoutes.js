@@ -10,9 +10,9 @@ import {
 } from "react-router-dom";
 
 import Layout from './Layout';
-import { useModal } from './logic/modal';
+import { useModal } from './hooks/modal';
 import { LanguageCodes } from './constants';
-import { useLanguage } from './logic/language';
+import { useLanguage } from './hooks/language';
 import AppRouteLoading from './pages/AppRouteLoading';
 
 import {
@@ -27,6 +27,7 @@ import {
 
 /* Pages */
 const Home = lazy(() => import('./pages/Home'));
+const HistoryOfJusticeSystem = lazy(() => import('./pages/HistoryOfJusticeSystem'));
 const Story = lazy(() => import('./pages/Story'));
 const MagistrateJob = lazy(() => import('./pages/MagistrateJob'));
 const Interview = lazy(() => import('./pages/Interview'));
@@ -96,10 +97,9 @@ const LangRoutes = () => {
       <Suspense fallback={<AppRouteLoading/>}>
         <Routes location={backgroundLocation || location}>
           <Route index element={<Home />} />
-          <Route path={HistoryOfJusticeSystemRoute.to}>
+          <Route path={HistoryOfJusticeSystemRoute.to} element={<HistoryOfJusticeSystem />}>
             <Route index element={<Navigate to="la-naissance-du-systeme-judiciaire-contemporain-au-19e-siecle" />} />
-            <Route path=":storySlug" element={<Story />}>
-            </Route>
+            <Route path=":storySlug" element={<Story />} />
           </Route>
           <Route path={MagistrateJobRoute.to} element={<MagistrateJob />}>
             <Route path=":interviewSlug" element={<Interview />} />

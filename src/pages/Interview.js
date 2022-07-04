@@ -6,8 +6,8 @@ import { find, findIndex } from 'lodash';
 import debounce from 'debounce';
 
 import { TopicSlider, SpeakerSlider } from '../components/interview';
-import { useModal } from '../logic/modal';
-import { useInterview, useInterviews } from '../logic/miller';
+import { useModal } from '../hooks/modal';
+import { useInterview, useInterviews } from '../hooks/miller';
 
 import { ReactComponent as CloseIcon } from '../images/icons/close.svg';
 

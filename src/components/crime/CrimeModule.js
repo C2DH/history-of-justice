@@ -1,7 +1,7 @@
 import React from 'react';
 import { find } from 'lodash';
 
-import { LinkModal } from '../../logic/modal';
+import { LinkModal } from '../../hooks/modal';
 import { MediaRoute } from '../../constants';
 
 import '../../styles/components/crime/CrimeModule.scss';

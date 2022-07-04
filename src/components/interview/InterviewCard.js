@@ -1,7 +1,7 @@
 import React from 'react';
 import { last } from 'lodash';
 
-import { LinkModal } from '../../logic/modal';
+import { LinkModal } from '../../hooks/modal';
 
 import '../../styles/components/interview/InterviewCard.scss';
 
