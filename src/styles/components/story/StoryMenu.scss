@@ -30,8 +30,7 @@
     }
 
     &:hover {
-      width: 100% !important;
-      overflow: visible;
+      width: 60% !important;
 
       &::after {
         background: none;
@@ -51,8 +50,7 @@
 
   &:not(:hover) {
     a.active {
-      width: 100% !important;
-      overflow: visible;
+      width: 60% !important;
 
       &::after {
         background: none;
