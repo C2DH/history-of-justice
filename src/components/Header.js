@@ -27,10 +27,10 @@ const Header = () => {
         <Navbar.Brand
           as        = {Link}
           to        = "."
-          className = "logo"
+          className = "logo serif"
         >
-          <img src="/logo.svg" alt="Logo Histoire de la Justice" />
-          <span>History of Justice</span>
+          Histoire de la<br/>
+          Justice
         </Navbar.Brand>
 
         <Navbar.Text className="title d-none d-sm-block">

@@ -10,6 +10,8 @@
   --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  --serif-font-family: 'ltc-bodoni-175', serif;
+  --accent: #{$accent};
 }
 
 body, html, #root {
@@ -48,4 +50,8 @@ h2 {
 h3 {
   font-size: 1.5rem;
   margin: 2rem 0;
+}
+
+.serif {
+  font-family: var(--serif-font-family);
 }

@@ -1,5 +1,4 @@
 .Header {
-
   border-bottom: 1px solid var(--bs-gray-400);
   font-size: 1.25rem;
   line-height: 1.2;
@@ -7,18 +6,21 @@
   z-index: 1050;
 
   .logo {
-    font-size: 0.875rem;
-    color: rgba(var(--bs-dark-rgb), 0.6);
+    font-size: 1.2rem;
+    color: var(--primary);// rgba(var(--bs-dark-rgb), 0.6);
 
     img {
       margin-right: 6px;
     }
+
   }
 
   .title {
     color: var(--bs-dark);
     line-height: 1;
     padding: 0;
+    font-family: ltc-bodoni-175, serif;
+    font-style: italic;
   }
 
   .menu-toggler {
@@ -27,7 +29,8 @@
     color: rgba(var(--bs-dark-rgb), 0.6);
     font-size: 0.875rem;
     padding-right: 0;
-
+    text-transform: uppercase;
+    font-weight: bold;
     span {
       margin: 6px;
     }
@@ -39,17 +42,17 @@
     margin-top: 1rem;
 
     .menu-item {
-
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align:center;
+      text-align: center;
       flex-grow: 1;
       font-size: 2.25rem;
       border-top: 1px solid var(--bs-gray-300);
       border-bottom: 1px solid var(--bs-gray-300);
-
-      &:hover, &.active {
+      font-family: var(--serif-font-family);
+      &:hover,
+      &.active {
       }
     }
   }
