@@ -7,6 +7,7 @@ import { PrimaryRoutes } from '../constants';
 import { useActiveRoute } from '../hooks/route';
 
 import { ReactComponent as MenuIcon } from '../images/icons/menu.svg';
+import Logo from '../images/histjust-logo.svg';
 import '../styles/components/Header.scss';
 
 
@@ -18,7 +19,7 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        className         = "Header px-3 px-sm-5"
+        className         = "Header px-3 px-sm-3"
         fixed             = "top"
         expand            = {false}
         bg                = "light"
@@ -29,8 +30,7 @@ const Header = () => {
           to        = "."
           className = "logo serif"
         >
-          Histoire de la<br/>
-          Justice
+          <img src={Logo} alt='logo' className="Header-logo" />
         </Navbar.Brand>
 
         <Navbar.Text className="title d-none d-sm-block">
