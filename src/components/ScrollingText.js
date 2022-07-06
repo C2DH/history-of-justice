@@ -28,8 +28,7 @@ const ScrollingText = ({
     } else {
       clearTimeout(delayTimeout.current);
       api.start({
-        transform: `translateX(0px)`,
-        immediate: true
+        transform: `translateX(0px)`
       });
     }
   }, [scrolling, delay])
