@@ -13,7 +13,7 @@ const StoryChapter = ({ id, index }) => {
   const [ chapter ] = useStory(id);
 
   return (
-    <Container className="Chapter">
+    <Container className="StoryChapter">
       {chapter && index > 0 &&
         <Row>
           <Col md={12}>

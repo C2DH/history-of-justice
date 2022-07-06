@@ -28,9 +28,23 @@
       position: absolute;
       top: 0.5rem;
       left: 1rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      line-height: 1.35rem;
+      text-align: center;
+      // border-radius: 2rem;
+      background-color: var(--bs-dark);
+      color: var(--bs-white);
+      transition: background-color .24s ease-in-out;
       @include media-breakpoint-up(sm) {
-        left: 2rem;
+        left: 0;
+        top: 0;
       }
+      &:hover{
+        background-color: var(--accent);
+        color: white;
+      }
+
     }
 
     .metadata {
@@ -43,6 +57,9 @@
       }
 
       .label {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: .7em;
         font-weight: bold;
       }
     }

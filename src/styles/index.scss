@@ -11,7 +11,9 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   --serif-font-family: 'ltc-bodoni-175', serif;
+  --sans-serif-font-family: 'brandon-grotesque', sans-serif;
   --accent: #{$accent};
+  --bs-body-color: #{$dark};
 }
 
 body, html, #root {
@@ -21,7 +23,7 @@ body, html, #root {
 
 body {
   margin: 0;
-  font-family: var(--font-family);
+  font-family: var(--sans-serif-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 88px;
@@ -37,7 +39,7 @@ select:focus {
 }
 
 h1 {
-  font-family: var(--font-family-titles);
+  font-family: var(--serif-font-family);
   @include font-size(4.5rem);
   font-weight: normal;
 }
@@ -54,4 +56,7 @@ h3 {
 
 .serif {
   font-family: var(--serif-font-family);
+}
+.sans {
+  font-family: var(--sans-serif-font-family);
 }
