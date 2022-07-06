@@ -1,18 +1,24 @@
 .Header {
-  border-bottom: 1px solid var(--bs-gray-400);
+  // border-bottom: 1px solid var(--bs-gray-400);
   font-size: 1.25rem;
   line-height: 1.2;
-  padding: 1rem 0;
+  // padding: 1rem 0;
+  padding: .25rem 0;
   z-index: 1050;
+  height: 60px;
 
-  .logo {
-    font-size: 1.2rem;
-    color: var(--primary);// rgba(var(--bs-dark-rgb), 0.6);
-
-    img {
-      margin-right: 6px;
-    }
-
+  // .logo {
+  //   font-size: 1.2rem;
+  //   color: var(--primary);// rgba(var(--bs-dark-rgb), 0.6);
+  //
+  //   img {
+  //     margin-right: 6px;
+  //   }
+  //
+  // }
+  .Header-logo{
+    height: 45px;
+    margin-left: 5px;
   }
 
   .title {
