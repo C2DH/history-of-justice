@@ -42,7 +42,7 @@ const Media = () => {
                 <span className="label">{t('year')} : </span>{t(media.data.year)}
               </div>
             }
-            {media?.data.start_date && media.data.start_data !== media.data.year &&
+            {media?.data.start_date && media.data.start_date !== media.data.year &&
               <div>
                 <span className="label">{t('date')} : </span>
                 {parseDate(media.data.start_date)}

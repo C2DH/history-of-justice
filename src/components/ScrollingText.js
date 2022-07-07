@@ -31,6 +31,7 @@ const ScrollingText = ({
         transform: `translateX(0px)`
       });
     }
+    // eslint-disable-next-line
   }, [scrolling, delay])
 
   return (

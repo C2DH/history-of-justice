@@ -1,18 +1,27 @@
 .Collection {
 
-  background-color: var(--bs-gray-200);
+  // background-color: var(--bs-gray-200);
   height: 100%;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
 
-  .position-sticky {
+  .Collection-filters {
     z-index: 1;
     top: 0;
     position: sticky;
-    background-color: var(--bs-gray-200);
+    // background-color: var(--bs-gray-200);
+    background-color: var(--bs-light);
+    border-bottom: 1px solid var(--bs-dark);
+    border-top: 1px solid var(--bs-gray-400);
     margin-left: 0;
-    padding: 1rem 0;
+    padding: .5rem 0 .75rem;
   }
 
+}
+
+.CollectionOrderByFilter-label{
+  font-weight: bold;
+  font-size: 0.7em;
+  text-transform: uppercase;
 }

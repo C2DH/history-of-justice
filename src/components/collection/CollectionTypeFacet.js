@@ -29,8 +29,9 @@ const CollectionTypeFacet = ({
   }
 
   return (
+    <div className="CollectionTypeFacet d-flex align-items-center border-end border-gray-400">
+    <span className="label ps-2">{t('doc.type')}</span>
     <Nav
-      className         = "CollectionTypeFacet"
       defaultActiveKey  = {TYPE_FACET_ALL}
       activeKey         = {value}
       onSelect          = {handleSelect}
@@ -42,6 +43,7 @@ const CollectionTypeFacet = ({
         </Nav.Link>
       )}
     </Nav>
+    </div>
   );
 }
 
