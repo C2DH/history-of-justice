@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next'
 
 import { useScrollEl } from '../ScrollContainer';
@@ -19,15 +19,19 @@ const CollectionOrderByFilter = ({ value='', onChange }) => {
   }
 
   return (
-    <Form>
-      <Form.Group as={Row}>
-        <Form.Label column xs="auto">{t('sort')}</Form.Label>
-        <Col sm="auto">
-          <Form.Select value={value} onChange={handleSelect}>
-            <option value="">{t('title')}</option>
-            <option value={DATE_FIELD}>{t('date')}</option>
-          </Form.Select>
-        </Col>
+    <Form className="CollectionOrderByFilter">
+      <Form.Group className="d-flex align-items-center">
+        <Form.Label
+          column
+          xs="auto"
+          className="CollectionOrderByFilter-label me-2"
+        >
+          {t('sort')}
+        </Form.Label>
+        <Form.Select value={value} onChange={handleSelect}>
+          <option value="">{t('title')}</option>
+          <option value={DATE_FIELD}>{t('date')}</option>
+        </Form.Select>
       </Form.Group>
     </Form>
   );
