@@ -39,7 +39,8 @@ const Collection = () => {
 
   return (
     <ScrollContainer as={Container} fluid className="Collection">
-      <Row className="position-sticky">
+      <div className="position-sticky Collection-filters">
+      <Row>
         <Col>
           <CollectionTypeFacet
             value     = {type}
@@ -48,10 +49,11 @@ const Collection = () => {
             onChange  = {setQueryType}
           />
         </Col>
-        <Col sm="auto">
+        <Col sm="auto" className="d-flex align-items-center">
           <CollectionOrderByFilter value={orderBy} onChange={setQueryOrderBy} />
         </Col>
       </Row>
+      </div>
 
       <Row className="h-100" style={{ justifyContent: "center" }}>
         <Col className="p-0">
