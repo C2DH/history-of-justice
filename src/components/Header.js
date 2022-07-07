@@ -41,6 +41,7 @@ const Header = () => {
         </Navbar.Text>
         <div className="d-flex">
           <Nav.Link
+            as={NavLink} 
             to={CollectionRoute.to}
             className="border-end border-dark"
           >{t(CollectionRoute.label)}
