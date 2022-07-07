@@ -41,12 +41,12 @@ const Header = () => {
         </Navbar.Text>
         <div className="d-flex">
           <Nav.Link
-            as={NavLink} 
+            as={NavLink}
             to={CollectionRoute.to}
-            className="border-end border-dark"
+            className="border-end border-gray-400"
           >{t(CollectionRoute.label)}
             <br/>
-            <span className="serif small text-50">
+            <span className="serif small text-gray-600">
               {t('number.resources', {
                 n: EstimatedNumberOfResources
               })}
