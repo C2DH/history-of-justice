@@ -10,6 +10,9 @@
       "navigation.media": "Document",
       "navigation.about": "About",
       "navigation.terms-of-use": "Terms of use",
+
+      "number.resources": "{{ n }} ressources",
+
       "pagesHomeTitle": "History of Justice (en)",
       "pagesHomeSubheading": "",
       "pages.notFound.title": "Oops...",
@@ -62,6 +65,9 @@
       "navigation.media": "Document",
       "navigation.about": "À propos",
       "navigation.terms-of-use": "Terms of use",
+
+      "number.resources": "{{ n }} ressources",
+
       "pagesHomeTitle": "History of Justice (fr)",
       "pagesHomeSubheading": "",
       "pages.notFound.title": "Oops...",

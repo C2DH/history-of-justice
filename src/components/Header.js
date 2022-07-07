@@ -3,10 +3,13 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { PrimaryRoutes } from '../constants';
+import {
+  PrimaryRoutes, CollectionRoute,
+  EstimatedNumberOfResources
+} from '../constants';
 import { useActiveRoute } from '../hooks/route';
 
-import { ReactComponent as MenuIcon } from '../images/icons/menu.svg';
+import { Menu } from 'react-feather';
 import Logo from '../images/histjust-logo.svg';
 import '../styles/components/Header.scss';
 
@@ -36,12 +39,28 @@ const Header = () => {
         <Navbar.Text className="title d-none d-sm-block">
           {t(activeRoute.label)}
         </Navbar.Text>
+        <div className="d-flex">
+          <Nav.Link
+            as={NavLink} 
+            to={CollectionRoute.to}
+            className="border-end border-dark"
+          >{t(CollectionRoute.label)}
+            <br/>
+            <span className="serif small text-50">
+              {t('number.resources', {
+                n: EstimatedNumberOfResources
+              })}
+            </span>
+          </Nav.Link>
 
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="menu-toggler">
-          <span>MENU</span>
-          <MenuIcon />
-        </Navbar.Toggle>
-
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="menu-toggler d-flex align-items-center"
+          >
+            <span>{t('menu')}</span>
+            <span><Menu size={20}/></span>
+          </Navbar.Toggle>
+        </div>
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
           <Nav className="main-menu">
 

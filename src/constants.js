@@ -34,3 +34,5 @@ export const DefaultLanguageCode = DefaultLanguage.split('-')[0];
 export const MillerAPI = process.env.REACT_APP_MILLER_API ?? '/api';
 
 export const CrimesThemeId = process.env.REACT_APP_CRIMES_THEME_ID ?? 'crimes';
+
+export const EstimatedNumberOfResources = 241

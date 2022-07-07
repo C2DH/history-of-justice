@@ -32,7 +32,8 @@
   .menu-toggler {
     border: none;
     box-shadow: none;
-    color: rgba(var(--bs-dark-rgb), 0.6);
+    color: var(--bs-dark);
+    // color: rgba(var(--bs-dark-rgb), 0.6);
     font-size: 0.875rem;
     padding-right: 0;
     text-transform: uppercase;
