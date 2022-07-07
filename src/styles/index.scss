@@ -15,7 +15,10 @@
   --accent: #{$accent};
   --bs-body-color: #{$dark};
   --bs-body-bg: #{$light};
+  --header-height: 75px;
 }
+
+
 
 body, html, #root {
   height: 100%;
@@ -27,7 +30,7 @@ body {
   font-family: var(--sans-serif-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 88px;
+  padding-top: var(--header-height);
 }
 
 code {
@@ -55,9 +58,25 @@ h3 {
   margin: 2rem 0;
 }
 
+
+label, span.label {
+  font-weight: bold;
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+
 .serif {
   font-family: var(--serif-font-family);
 }
 .sans {
   font-family: var(--sans-serif-font-family);
+}
+
+@each $name, $value in $grays {
+  .border-gray-#{$name} {
+     border-color: $value !important;
+  }
+  .text-gray-#{$name} {
+     color: $value !important;
+  }
 }
