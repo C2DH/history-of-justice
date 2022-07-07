@@ -2,6 +2,7 @@
   "en-GB": {
     "translation": {
       "asNumber": "{{ n,2 }}",
+      "doc.type": "type",
       "navigation.home": "",
       "navigation.history-of-justice-system": "History of the Justice System",
       "navigation.magistrate-job": "The magistrate's job",
@@ -57,6 +58,7 @@
   "fr-FR": {
     "translation": {
       "asNumber": "{{ n,2 }}",
+      "doc.type": "type",
       "navigation.home": "",
       "navigation.history-of-justice-system": "L'histoire de l'organisation judiciaire",
       "navigation.magistrate-job": "Le travail du magistrat",
