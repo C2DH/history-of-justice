@@ -1,3 +1,7 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 .StoryMenu {
   flex-wrap: nowrap;
   border-top: 1px solid var(--bs-gray-300);
@@ -8,6 +12,15 @@
   top: -3rem;
   bottom: 0;
   z-index: 1;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include media-breakpoint-down(md) {
+    overflow-x: auto;
+  }
 
   a {
     font-size: 1.5rem;
@@ -20,6 +33,16 @@
     transition: all 0.5s;
     position: relative;
 
+    @include media-breakpoint-down(md) {
+      flex: 0 0 auto;
+      width: 250px !important;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      white-space: normal;
+      text-align: center;
+      padding: 1rem;
+    }
+
     & + a {
       border-left: 1px solid var(--bs-gray-300);
     }
@@ -30,27 +53,33 @@
     }
 
     &:hover {
-      width: 60% !important;
+      @include media-breakpoint-up(md) {
+        width: 60% !important;
+      }
 
       &::after {
         background: none;
       }
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    @include media-breakpoint-up(md) {
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+      }
     }
   }
 
-  &:not(:hover) {
-    a.active {
-      width: 60% !important;
+  @include media-breakpoint-up(md) {
+    &:not(:hover) {
+      a.active {
+        width: 60% !important;
+      }
 
       &::after {
         background: none;

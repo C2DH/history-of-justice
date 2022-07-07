@@ -1,3 +1,7 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 .HistoryOfJusticeSystem {
 
   font-size: 1.5rem;
@@ -6,6 +10,14 @@
   padding-top: 3rem;
   scroll-behavior: smooth;
 
+  @include media-breakpoint-down(md) {
+    font-size: 1.25rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 1rem;
+  }
+
   .intro {
     min-height: 100%;
     margin-bottom: 3rem;
@@ -13,6 +25,10 @@
 
   .theme {
     min-height: 100%;
-    padding-top: 7rem;
+    padding-top: 6rem;
+
+    @include media-breakpoint-down(md) {
+      padding-top: 4rem;
+    }
   }
 }
