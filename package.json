@@ -6,6 +6,7 @@
   "dependencies": {
     "@c2dh/react-miller": "^1.0.0-beta.2",
     "@kokarn/react-zoom-pan-pinch": "^2.1.5",
+    "@react-spring/parallax": "^9.4.5",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",

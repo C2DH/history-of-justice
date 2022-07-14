@@ -32,7 +32,7 @@ const ScrollingText = ({
       });
     }
     // eslint-disable-next-line
-  }, [scrolling, delay])
+  }, [scrolling, delay, speed])
 
   return (
     <animated.div style={{ ...styles }}>

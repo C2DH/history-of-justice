@@ -4,13 +4,15 @@ import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import {
-  PrimaryRoutes, CollectionRoute,
-  EstimatedNumberOfResources
+  PrimaryRoutes,
+  CollectionRoute,
+  HomeRoute
 } from '../constants';
 import { useActiveRoute } from '../hooks/route';
+import { useMediasCount } from '../hooks/miller';
 
 import { Menu } from 'react-feather';
-import Logo from '../images/histjust-logo.svg';
+import { ReactComponent as Logo } from '../images/histjust-logo.svg';
 import '../styles/components/Header.scss';
 
 
@@ -18,6 +20,8 @@ const Header = () => {
 
   const activeRoute = useActiveRoute();
   const { t }       = useTranslation();
+  const count       = useMediasCount();
+  const mode        = activeRoute === HomeRoute ? 'dark' : 'light';
 
   return (
     <header>
@@ -25,7 +29,8 @@ const Header = () => {
         className         = "Header px-3 px-sm-3"
         fixed             = "top"
         expand            = {false}
-        bg                = "light"
+        variant           = {mode}
+        bg                = {mode}
         collapseOnSelect
       >
         <Navbar.Brand
@@ -33,25 +38,27 @@ const Header = () => {
           to        = "."
           className = "logo serif"
         >
-          <img src={Logo} alt='logo' className="Header-logo" />
+          <Logo className="header-logo" />
         </Navbar.Brand>
 
         <Navbar.Text className="title d-none d-sm-block">
           {t(activeRoute.label)}
         </Navbar.Text>
         <div className="d-flex">
-          <Nav.Link
-            as={NavLink}
-            to={CollectionRoute.to}
-            className="border-end border-gray-400"
-          >{t(CollectionRoute.label)}
-            <br/>
-            <span className="serif small text-gray-600">
-              {t('number.resources', {
-                n: EstimatedNumberOfResources
-              })}
-            </span>
-          </Nav.Link>
+          <Nav className="d-none d-md-block">
+            <Nav.Link
+              as        = {NavLink}
+              to        = {CollectionRoute.to}
+              className = "border-end border-gray-400 pe-3"
+            >{t(CollectionRoute.label)}
+              <br/>
+              <span className="serif small text-gray-600">
+                {t('number.resources', {
+                  n: count
+                })}
+              </span>
+            </Nav.Link>
+          </Nav>
 
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"

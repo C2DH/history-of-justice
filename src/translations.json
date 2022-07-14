@@ -3,14 +3,21 @@
     "translation": {
       "asNumber": "{{ n,2 }}",
       "doc.type": "type",
-      "navigation.home": "",
+      "navigation.home": "home",
       "navigation.history-of-justice-system": "History of the Justice System",
       "navigation.magistrate-job": "The magistrate's job",
       "navigation.crimes-and-trials": "Crimes and trials",
       "navigation.collection": "Collection",
       "navigation.media": "Document",
       "navigation.about": "About",
-      "navigation.terms-of-use": "Terms of use",
+      "navigation.terms-of-use": "terms of use",
+
+      "navigation.type.text": "text",
+      "navigation.type.search": "search engine",
+      "navigation.type.interview": "interview",
+
+      "legal notice": "Copyright University of Luxembourg, 2022",
+      "university of luxembourg": "University of Luxembourg",
 
       "number.resources": "{{ n }} ressources",
 
@@ -59,14 +66,21 @@
     "translation": {
       "asNumber": "{{ n,2 }}",
       "doc.type": "type",
-      "navigation.home": "",
+      "navigation.home": "accueil",
       "navigation.history-of-justice-system": "L'histoire de l'organisation judiciaire",
       "navigation.magistrate-job": "Le travail du magistrat",
       "navigation.crimes-and-trials": "Punir le crime",
       "navigation.collection": "Collection",
       "navigation.media": "Document",
       "navigation.about": "À propos",
-      "navigation.terms-of-use": "Terms of use",
+      "navigation.terms-of-use": "conditions d'utilisation",
+
+      "navigation.type.text": "texte",
+      "navigation.type.search": "moteur de recherche",
+      "navigation.type.interview": "entretien vidéo",
+
+      "legal notice": "Copyright Université de Luxembourg, 2022",
+      "university of luxembourg": "Université de Luxembourg",
 
       "number.resources": "{{ n }} ressources",
 

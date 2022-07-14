@@ -1,21 +1,122 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+
+import { usePromotedMedias } from '../hooks/miller';
+import {
+  HomeRoutes,
+  HomeFooterRoutes,
+  HomeRoute
+} from '../constants';
+
+import logoUni from '../images/logo_unilu.png';
+import '../styles/pages/Home.scss';
+
+
+const PARALLAX_DATA = [
+  [0.05, -1.1, false],
+  [0.05, -0.5, true],
+  [0, -1.5, false],
+  [0.5, -0.3, false],
+  [1.3, 0.3, false]
+];
 
 
 const Home = () => {
 
-  const { t } = useTranslation();
+  const { t }     = useTranslation();
+  const medias  = usePromotedMedias(PARALLAX_DATA.length);
 
   return (
-    <Container fluid className="pt-5 px-5">
-      <Row>
-        <Col>
-          <h1 className="my-5">{t('pagesHomeTitle')}</h1>
-          <p>{t('pagesHomeSubheading')} {t('asNumber', {n: 15040.32456})}</p>
-        </Col>
-      </Row>
-    </Container>
+    <Parallax pages={2} className="Home">
+      {medias.map((media, i) =>
+        <React.Fragment key={i.toString()}>
+          {media &&
+            <ParallaxLayer
+              offset      = {PARALLAX_DATA[i][0]}
+              speed       = {PARALLAX_DATA[i][1]}
+              horizontal  = {PARALLAX_DATA[i][2]}
+              className   = "promoted-picture"
+              >
+                <img src={media.data.resolutions.thumbnail.url} alt={media.data.title} />
+            </ParallaxLayer>
+          }
+        </React.Fragment>
+      )}
+
+      <ParallaxLayer offset={0}>
+        <Container className="h-100">
+          <Row className="h-100 justify-content-center">
+            <Col md={8} className="intro">
+              <h1 className="main-title">
+                <span>Histoire</span>
+                <span>de la</span>
+                <span>Justice</span>
+                <span>au Luxembourg</span>
+              </h1>
+              <div className="citation">
+                “Il apparaît qu’une réflexion d’ordre éthique est indispensable pour différents raisons. Les pouvoirs du magistrat sont liés aux valeurs de la justice, de la verité et de la liberté. Les normes de conduite des magistrats sont les corollaire de ces valeurs er la condtion de la confiance en la justice”
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </ParallaxLayer>
+
+      <ParallaxLayer offset={1}>
+        <Container className="h-100">
+          <Row className="h-100 justify-content-center">
+            <Col lg={8} className="h-100 navigation">
+              <Nav className="menu">
+                {HomeRoutes.map(route =>
+                  <Nav.Item key={route.to} className="menu-item">
+                    <Nav.Link
+                      as        = {NavLink}
+                      to        = {route.to}
+                      eventKey  = {route.to}
+                    >
+                      {t(route.label)}
+                    </Nav.Link>
+                    <div className={`type serif ${route.type}`}>
+                      {t(`navigation.type.${route.type}`)}
+                    </div>
+                  </Nav.Item>
+                )}
+              </Nav>
+
+              <div className="footer">
+                <Nav className="footer-menu">
+                  {HomeFooterRoutes.map(route =>
+                    <Nav.Link
+                      as        = {NavLink}
+                      to        = {route.to}
+                      key       = {route.to}
+                      eventKey  = {route.to}
+                      className = {`menu-item ${route === HomeRoute ? 'active' : ''}`}
+                    >
+                      {t(route.label)}
+                    </Nav.Link>
+                  )}
+                </Nav>
+                <div className="copyright">
+                  {t('legal notice')}
+                </div>
+                <a
+                  href      = "https://wwwfr.uni.lu/"
+                  target    = "_blank"
+                  className = "logo"
+                  rel       = "noreferrer"
+                  >
+                  <img src={logoUni} alt={t('university of luxembourg')} />
+                </a>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </ParallaxLayer>
+
+    </Parallax>
   )
 }
 

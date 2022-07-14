@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Miller,
@@ -247,12 +247,78 @@ export const useMedias = (type, orderBy) => {
 
 
 /**
+ * Hook to get medias to promote on the home page
+ * @param   n    number of medias to get
+ */
+// const PROMOTED_MEDIAS_PARAMS = {
+//   filters: {
+//     type: 'image'
+//   },
+//   limit: ALL_RECORDS
+// };
+// export const usePromotedMedias = (n = 5) => {
+//
+//   const [data, meta] = useDocuments({ params: PROMOTED_MEDIAS_PARAMS });
+//
+//   const medias = [];
+//   if(data) {
+//     for(let i = 0; i < n; i++) {
+//       medias.push(data.results[Math.floor(Math.random() * data.count)]);
+//     }
+//   }
+//
+//   return [medias, meta];
+// }
+
+
+const PROMOTED_MEDIAS_PARAMS = {
+  filters: {
+    type: 'image'
+  },
+  limit: 1
+};
+export const usePromotedMedias = (n = 5) => {
+
+  const count                 = useMediasCount(['image']);
+  const [offsets, setOffsets] = useState(() => Array(n).fill(-1));
+
+  useEffect(() =>{
+    if(count > 0)
+      setOffsets(Array.from({length: n}, () => Math.floor(Math.random() * count)));
+  }, [count, n]);
+
+  // eslint-disable-next-line
+  const medias = offsets.map(offset => useDocuments({ params: {...PROMOTED_MEDIAS_PARAMS, offset}, enabled: offset !== -1 })[0]?.results[0]);
+
+  return medias;
+}
+
+
+/**
+ * Hook to get the number of medias
+ * @param   type    array of type of medias to get
+ */
+export const useMediasCount = (type = ['image', 'pdf']) => {
+
+  const params = {
+    filters: {
+      type__in: type,
+    },
+    limit: 1
+  };
+
+  const [data] = useDocuments({ params });
+  return data?.count || 0;
+}
+
+
+/**
  * Hook to get type facets of medias
  */
 const MEDIA_FACETS_PARAMS = {
   facets: 'data__type',
-  exclude: {
-   type: 'entity'
+  filters: {
+    type__in: ['image', 'pdf']
   }
 };
 export const useMediaFacets = () => {
