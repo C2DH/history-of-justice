@@ -79,7 +79,7 @@
     .menu {
       flex-direction: column;
       font-size: 2.25em;
-      line-height: 1;
+      line-height: 1.2;
       flex: 2 1 auto;
 
       @include media-breakpoint-down(lg) {
@@ -99,6 +99,7 @@
         align-items: center;
         position: relative;
         transform: translateY(-100%);
+        padding: 1rem 0;
 
         .type {
           font-style: italic;
@@ -149,14 +150,11 @@
       flex: 1 1 auto;
       flex-direction: column;
       align-items: center;
+      gap: 1rem;
+      transform: translateY(-50px);
 
       > * {
         flex: 1 1 auto;
-      }
-
-      @include media-breakpoint-down(lg) {
-//        gap: 1.5rem;
-//        margin-bottom: 1.5rem;
       }
 
       .footer-menu {
@@ -188,7 +186,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        line-height: 1;
+        line-height: 1.8;
         font-size: 1.5rem;
         border-top: 1px solid var(--bs-gray-300);
         border-bottom: 1px solid var(--bs-gray-300);
