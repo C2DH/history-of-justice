@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        className         = "Header px-3 px-sm-3"
+        className         = "Header px-3"
         fixed             = "top"
         expand            = {false}
         variant           = {mode}
@@ -44,7 +44,7 @@ const Header = () => {
         <Navbar.Text className="title d-none d-sm-block">
           {t(activeRoute.label)}
         </Navbar.Text>
-        <div className="d-flex">
+        <div className="d-flex h-100">
           <Nav className="d-none d-md-block">
             <Nav.Link
               as        = {NavLink}
@@ -68,7 +68,7 @@ const Header = () => {
             <span><Menu size={20}/></span>
           </Navbar.Toggle>
         </div>
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-menu">
           <Nav className="main-menu">
 
             {PrimaryRoutes.map(route =>

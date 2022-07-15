@@ -32,11 +32,13 @@
     padding: 1rem 2rem;
     transition: all 0.5s;
     position: relative;
+    display: flex;
+    align-items: center;
 
     @include media-breakpoint-down(md) {
       flex: 0 0 auto;
       width: 250px !important;
-      font-size: 0.75rem;
+      font-size: 1rem;
       line-height: 1.2;
       white-space: normal;
       text-align: center;

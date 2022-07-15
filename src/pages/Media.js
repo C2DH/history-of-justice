@@ -26,7 +26,7 @@ const Media = () => {
 
   return (
     <Container fluid className={`Media px-0 px-sm-3 pb-0 pb-sm-3 ${darkMode ? 'dark' : ''}`}>
-      <Row className="px-2 pt-4 px-md-4 pb-4 content position-relative">
+      <Row className="px-2 pt-5 pt-md-4 px-md-4 pb-4 content position-relative">
         <Col md={4} className="metadata mb-3">
           <Link to={exitLink || `../${CollectionRoute.to}`} className="back-icon">
             <ArrowLeft size={20} />

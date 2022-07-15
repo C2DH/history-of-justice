@@ -56,7 +56,7 @@ const Crime = () => {
         <CloseIcon />
       </Link>
 
-      <Row className="h-100 py-3">
+      <Row className="h-100 pt-5">
         <Col>
           <Carousel
             slides          = {slides}

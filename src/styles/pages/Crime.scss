@@ -1,4 +1,8 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
 .Crime {
+
 
   position: absolute;
   background-color: var(--bs-gray-800);
@@ -12,5 +16,10 @@
     right: 4rem;
     top: 1.5rem;
     z-index: 10;
+
+    @include media-breakpoint-down(md) {
+      right: 1rem;
+      top: 0.5rem;
+    }
   }
 }
