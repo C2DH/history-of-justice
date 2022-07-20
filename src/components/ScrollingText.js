@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 
 const ScrollingText = ({
@@ -10,17 +10,17 @@ const ScrollingText = ({
 
   const textEl            = useRef();
   const delayTimeout      = useRef();
+  const [shift, setShift] = useState(0);
 
-  const [styles, api]     = useSpring(() => ({
-    transform: 'translateX(0px)',
-  }));
+  const [{ x }, api]      = useSpring({x: 0}, []);
 
   useEffect(() => {
     if(scrolling) {
       delayTimeout.current = setTimeout(() => {
         const shift = Math.max(textEl.current.offsetWidth - textEl.current.parentElement.offsetWidth, 0);
+        setShift(shift);
         api.start({
-          transform: `translateX(-${shift}px)`,
+          x:      -shift,
           config: { duration: shift * speed }
         })
       }, delay);
@@ -28,14 +28,14 @@ const ScrollingText = ({
     } else {
       clearTimeout(delayTimeout.current);
       api.start({
-        transform: `translateX(0px)`
+        x:      0,
+        config: { duration: shift * speed / 2 }
       });
     }
-    // eslint-disable-next-line
-  }, [scrolling, delay, speed])
+  }, [scrolling, delay, speed, shift, api])
 
   return (
-    <animated.div style={{ ...styles }}>
+    <animated.div style={{ x }}>
       <span ref={textEl}>
         {children}
       </span>
