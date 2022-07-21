@@ -10,6 +10,7 @@
   padding: .25rem 0;
   height: 72px;
   z-index: 1050;
+  transition: background-color 0.5s ease 0.5s;
 
   .header-logo {
     height: 45px;
@@ -40,10 +41,11 @@
   .navbar-menu {
     margin: 0 -1rem;
     margin-top: 0.25rem;
-    background-color: var(--bs-light);
 
     .main-menu {
       height: calc(100vh - 72px);
+      background-color: var(--bs-light);
+      transition: background-color 0.5s ease 0.5s;
 
       .menu-item {
         display: flex;

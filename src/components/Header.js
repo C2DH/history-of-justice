@@ -41,9 +41,12 @@ const Header = () => {
           <Logo className="header-logo" />
         </Navbar.Brand>
 
-        <Navbar.Text className="title d-none d-sm-block">
-          {t(activeRoute.label)}
-        </Navbar.Text>
+        {activeRoute !== HomeRoute &&
+          <Navbar.Text className="title d-none d-sm-block">
+            {t(activeRoute.label)}
+          </Navbar.Text>
+        }
+
         <div className="d-flex h-100">
           <Nav className="d-none d-md-block">
             <Nav.Link

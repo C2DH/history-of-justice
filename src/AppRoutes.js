@@ -8,11 +8,13 @@ import {
   useNavigate,
   Navigate
 } from "react-router-dom";
+import { useTransition, animated } from 'react-spring';
 
 import Layout from './Layout';
 import { useModal } from './hooks/modal';
-import { LanguageCodes } from './constants';
+import { useActiveRoute } from './hooks/route';
 import { useLanguage } from './hooks/language';
+import { LanguageCodes } from './constants';
 import AppRouteLoading from './pages/AppRouteLoading';
 
 import {
@@ -87,9 +89,8 @@ const RouteAdapter = ({ children }) => {
 
 
 /* Pages routing by language */
-const LangRoutes = () => {
+const LangRoutes = ({ location }) => {
 
-  const location                = useLocation();
   const { backgroundLocation }  = useModal();
 
   return (
@@ -127,19 +128,36 @@ const LangRoutes = () => {
 
 const AppRoutes = ({ enableGA=false }) => {
 
-  const { lang } = useLanguage();
-  const location = useLocation();
+  const { lang }                = useLanguage();
+  const location                = useLocation();
+  const { backgroundLocation }  = useModal();
+  const activeRoute             = useActiveRoute(backgroundLocation || location);
+
+  const transitions             = useTransition(location, {
+    key: location => activeRoute.to,
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 500 },
+    trail: 500
+  });
 
   return (
     <React.Fragment>
       <GA enabled={enableGA} />
       <QueryParamProvider ReactRouterRoute={RouteAdapter}>
-        <Routes>
-          {LanguageCodes.map(lang =>
-            <Route path={`${lang}/*`} element={<LangRoutes />} key="lang" />
-          )}
-          <Route path="*" element={<Navigate to={`/${lang}${location.pathname}`} />} />
-        </Routes>
+
+        {transitions(({ opacity }, location) =>
+          <animated.div style={{ opacity }} className="h-100 w-100 position-absolute">
+            <Routes location={location}>
+              {LanguageCodes.map(lang =>
+                <Route path={`${lang}/*`} element={<LangRoutes location={location} />} key="lang" />
+              )}
+              <Route path="*" element={<Navigate to={`/${lang}${location.pathname}`} />} />
+            </Routes>
+          </animated.div>
+        )}
+
       </QueryParamProvider>
     </React.Fragment>
   );

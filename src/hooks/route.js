@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { AllRoutes } from '../constants';
 
 
-export const useActiveRoute = () => {
+export const useActiveRoute = (location) => {
     const { pathname } = useLocation();
-    return _.find(AllRoutes, route => pathname.includes(route.to));
+    return _.find(AllRoutes, route => (location?.pathname || pathname).includes(route.to));
 }

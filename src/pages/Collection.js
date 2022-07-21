@@ -57,13 +57,13 @@ const Collection = () => {
 
       <Row className="h-100" style={{ justifyContent: "center" }}>
         <Col className="p-0">
-        {medias &&
-          <CollectionGrid
-            items       = {medias}
-            canLoadMore = {hasNextPage}
-            loadMore    = {fetchNextPage}
-          />
-        }
+          {medias &&
+            <CollectionGrid
+              items       = {medias}
+              canLoadMore = {hasNextPage}
+              loadMore    = {fetchNextPage}
+            />
+          }
         </Col>
       </Row>
     </ScrollContainer>
