@@ -29,12 +29,12 @@ const Interview = () => {
   const loadInterview = debounce((slug) => navigate(`../${slug}`), 1000);
 
   const topic_selectHandler = slug => {
-    const newInterview = find(interviews, item => item.topic.slug === slug && item.speaker.slug === interview.speaker.slug);
+    const newInterview = find(interviews, item => item.topic?.slug === slug && item.speaker?.slug === interview.speaker.slug);
     if(newInterview) loadInterview(newInterview.slug);
   }
 
   const speaker_selectHandler = slug => {
-    const newInterview = find(interviews, item => item.speaker.slug === slug && item.topic.slug === interview.topic.slug);
+    const newInterview = find(interviews, item => item.speaker?.slug === slug && item.topic?.slug === interview.topic.slug);
     if(newInterview) loadInterview(newInterview.slug);
   }
 

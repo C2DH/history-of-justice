@@ -22,14 +22,14 @@ const InterviewCard = ({
     <LinkModal
       to            = {interview.slug}
       className     = {`InterviewCard ${isActive ? 'active' : ''} ${isLast ? 'last' : ''}`}
-      style         = {{ width: `${interview.data.duration / 3}px` }}
+      style         = {{ width: `${100 + interview.data.duration / 5}px` }}
       state         = {{ playlist: group.interviews }}
       onMouseEnter  = {mouseEnterHandler}
       onMouseLeave  = {mouseLeaveHandler}
     >
       <figure>
         <img src={interview.data.resolutions?.thumbnail.url} alt={interview.title} />
-        <figcaption>{interview[group.data.type === 'topic' ? 'speaker' : 'topic' ].data.title}</figcaption>
+        <figcaption>{interview[group.data.type === 'topic' ? 'speaker' : 'topic' ]?.data.title}</figcaption>
       </figure>
     </LinkModal>
   );

@@ -111,7 +111,7 @@ export const useTopics = speakerId => {
   // Keep only topics with an available interview for the speaker
   const filteredTopics = useMemo(() => topics.filter(
     topic => findIndex(interviews,
-      item => item.speaker.slug === speakerId && item.topic.slug === topic.slug
+      item => item.speaker?.slug === speakerId && item.topic?.slug === topic.slug
     ) !== -1
   ), [interviews, topics, speakerId]);
 
@@ -132,7 +132,7 @@ export const useSpeakers = topicId => {
   // Keep only speakers with an available interview for the topic
   const filteredSpeakers = useMemo(() => speakers.filter(
     speaker => findIndex(interviews,
-      item => item.topic.slug === topicId && item.speaker.slug === speaker.slug
+      item => item.topic?.slug === topicId && item.speaker?.slug === speaker.slug
     ) !== -1
   ), [interviews, speakers, topicId]);
 
@@ -201,7 +201,7 @@ export const useGroupedInterviews = (groupBy = SPEAKER_GROUP) => {
 
     // Group interviews
     for(const interview of sortedInterviews) {
-      const slug = groupBy === SPEAKER_GROUP ? interview.speaker.slug : interview.topic.slug;
+      const slug = groupBy === SPEAKER_GROUP ? interview.speaker?.slug : interview.topic?.slug;
       groupedInterviews[slug] = groupedInterviews[slug] ?? [];
       groupedInterviews[slug].push(interview);
     }
