@@ -16,14 +16,14 @@ const Footer = () => {
 
   return (
     <div as="footer" className="Footer">
-      <Nav className="footer-menu" defaultActiveKey={activeRoute.to}>
+      <Nav className="footer-menu">
         {HomeFooterRoutes.map(route => 
           <Nav.Link
             as        = {NavLink}
             to        = {route.to}
             key       = {route.to}
             eventKey  = {route.to}
-            className = {`menu-item`}
+            className = {`menu-item ${route === activeRoute ? 'active' : ''}`}
           >
             {t(route.label)}
           </Nav.Link>
