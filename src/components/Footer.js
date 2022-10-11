@@ -20,10 +20,9 @@ const Footer = () => {
         {HomeFooterRoutes.map(route => 
           <Nav.Link
             as        = {NavLink}
-            to        = {route.to}
+            to        = {`../${route.to}`}
             key       = {route.to}
-            eventKey  = {route.to}
-            className = {`menu-item ${route === activeRoute ? 'active' : ''}`}
+            className = {`menu-item`}
           >
             {t(route.label)}
           </Nav.Link>
