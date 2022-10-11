@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
+import Footer from '../components/Footer';
 import ScrollContainer from '../components/ScrollContainer';
 import { StoryMenu } from '../components/story';
 import { useThemes } from '../hooks/miller';
@@ -40,6 +41,14 @@ Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel mas
       <div ref={storyEl} className="theme">
         <Outlet />
       </div>
+
+      <Container>
+        <Row className="mt-5 mb-5 justify-content-center">
+          <Col md={8}>
+            <Footer />
+          </Col>
+        </Row>
+      </Container>
     </ScrollContainer>
   )
 }

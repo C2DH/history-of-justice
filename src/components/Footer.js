@@ -1,30 +1,46 @@
-import { Container, Row, Col } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom';
-import {
-  TermsOfUseRoute
-} from '../constants'
+import { Nav } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
-const now = new Date()
+import { HomeFooterRoutes } from '../constants';
+import { useActiveRoute } from '../hooks/route';
 
-const Footer = ()=> {
+import { ReactComponent as LogoUni } from '../images/logo_unilu.svg';
+import '../styles/components/Footer.scss';
 
-  const { t } = useTranslation();
+
+const Footer = () => {
+
+  const activeRoute = useActiveRoute();
+  const { t }       = useTranslation();
 
   return (
-    <Container as="footer" className="py-5">
-      <Row>
-        <Col>Copyright © <a href="https://www.uni.lu/">University of Luxembourg</a> {now.getFullYear()}</Col>
-        <Col>
-          <Link to={TermsOfUseRoute.to}>{t(TermsOfUseRoute.label)}</Link>
-        </Col>
-        <Col>
-          View sourcecode of this version: <a href={`https://github.com/C2DH/legionnaire/commit/${process.env.REACT_APP_GIT_REVISION}`}>
-          {process.env.REACT_APP_GIT_BRANCH}/{process.env.REACT_APP_GIT_REVISION}
-          </a>
-        </Col>
-      </Row>
-    </Container>
+    <div as="footer" className="Footer">
+      <Nav className="footer-menu" defaultActiveKey={activeRoute.to}>
+        {HomeFooterRoutes.map(route => 
+          <Nav.Link
+            as        = {NavLink}
+            to        = {route.to}
+            key       = {route.to}
+            eventKey  = {route.to}
+            className = {`menu-item`}
+          >
+            {t(route.label)}
+          </Nav.Link>
+        )}
+      </Nav>
+      <div className="copyright">
+        {t('legal notice')}
+      </div>
+      <a
+        href      = "https://wwwfr.uni.lu/"
+        target    = "_blank"
+        className = "logo"
+        rel       = "noreferrer"
+        >
+        <LogoUni />
+      </a>
+    </div>
   )
 }
 

@@ -4,14 +4,10 @@ import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
+import Footer from '../components/Footer';
 import { usePromotedMedias } from '../hooks/miller';
-import {
-  HomeRoutes,
-  HomeFooterRoutes,
-  HomeRoute
-} from '../constants';
+import { HomeRoutes } from '../constants';
 
-import logoUni from '../images/logo_unilu.png';
 import '../styles/pages/Home.scss';
 
 
@@ -26,7 +22,7 @@ const PARALLAX_DATA = [
 
 const Home = () => {
 
-  const { t }     = useTranslation();
+  const { t }   = useTranslation();
   const medias  = usePromotedMedias(PARALLAX_DATA.length);
 
   return (
@@ -85,32 +81,7 @@ const Home = () => {
                 )}
               </Nav>
 
-              <div className="footer">
-                <Nav className="footer-menu">
-                  {HomeFooterRoutes.map(route =>
-                    <Nav.Link
-                      as        = {NavLink}
-                      to        = {route.to}
-                      key       = {route.to}
-                      eventKey  = {route.to}
-                      className = {`menu-item ${route === HomeRoute ? 'active' : ''}`}
-                    >
-                      {t(route.label)}
-                    </Nav.Link>
-                  )}
-                </Nav>
-                <div className="copyright">
-                  {t('legal notice')}
-                </div>
-                <a
-                  href      = "https://wwwfr.uni.lu/"
-                  target    = "_blank"
-                  className = "logo"
-                  rel       = "noreferrer"
-                  >
-                  <img src={logoUni} alt={t('university of luxembourg')} />
-                </a>
-              </div>
+              <Footer />
             </Col>
           </Row>
         </Container>

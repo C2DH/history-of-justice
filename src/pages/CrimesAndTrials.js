@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
 
+import Footer from '../components/Footer';
 import { CrimeCard, CrimeOrderByFilter } from '../components/crime';
 import { useModal } from '../hooks/modal';
 import { useCrimes } from '../hooks/miller';
@@ -39,6 +40,15 @@ const Crimes = () => {
             </Col>
           )}
         </Row>
+
+        <Container>
+          <Row className="mt-5 justify-content-center">
+            <Col md={8}>
+              <Footer />
+            </Col>
+          </Row>
+        </Container>
+
       </ScrollContainer>
 
       <Outlet />

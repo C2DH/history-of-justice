@@ -4,6 +4,7 @@ import { useQueryParam, StringParam } from 'use-query-params';
 
 import { useMedias, useMediaFacets } from '../hooks/miller';
 import { useModal } from '../hooks/modal';
+import Footer from '../components/Footer';
 import ScrollContainer from '../components/ScrollContainer';
 import {
   CollectionGrid,
@@ -55,7 +56,7 @@ const Collection = () => {
       </Row>
       </div>
 
-      <Row className="h-100" style={{ justifyContent: "center" }}>
+      <Row style={{ justifyContent: "center" }}>
         <Col className="p-0">
           {medias &&
             <CollectionGrid
@@ -66,6 +67,15 @@ const Collection = () => {
           }
         </Col>
       </Row>
+
+      <Container>
+        <Row className="mt-5 justify-content-center">
+          <Col md={8}>
+            <Footer />
+          </Col>
+        </Row>
+      </Container>
+
     </ScrollContainer>
   )
 }

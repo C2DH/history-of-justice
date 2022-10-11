@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
 
 import { useModal } from '../hooks/modal';
+import Footer from '../components/Footer';
 import ScrollContainer from '../components/ScrollContainer';
 import { useGroupedInterviews } from '../hooks/miller';
 import {
@@ -60,6 +61,14 @@ const MagistrateJob = () => {
             </div>
           </Col>
         </Row>
+
+        <Container>
+          <Row className="mt-5 justify-content-center">
+            <Col md={8}>
+              <Footer />
+            </Col>
+          </Row>
+        </Container>
       </ScrollContainer>
 
       <Outlet />
