@@ -35,7 +35,7 @@ const Header = () => {
       >
         <Navbar.Brand
           as        = {Link}
-          to        = "."
+          to        = {HomeRoute.to}
           className = "logo serif"
         >
           <Logo className="header-logo" />

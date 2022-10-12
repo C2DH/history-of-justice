@@ -1,4 +1,4 @@
-export const HomeRoute = { to:'/', label: 'navigation.home'}
+export const HomeRoute = { to:'./', label: 'navigation.home'}
 export const HistoryOfJusticeSystemRoute = {
   to:     'histoire-organisation-judiciaire',
   label:  'navigation.history-of-justice-system',
@@ -39,7 +39,7 @@ export const HomeRoutes = [
   CollectionRoute
 ];
 
-export const HomeFooterRoutes = [
+export const FooterRoutes = [
   TermsOfUseRoute,
   AboutRoute,
   HomeRoute
