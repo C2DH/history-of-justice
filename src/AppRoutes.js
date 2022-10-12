@@ -1,6 +1,7 @@
 import React, { lazy, useEffect, Suspense } from 'react';
 import ReactGA from 'react-ga';
 import { QueryParamProvider } from 'use-query-params';
+import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 import {
   Routes,
   Route,
@@ -63,31 +64,6 @@ const GA = ({ enabled = false }) => {
 }
 
 
-/**
- * This is the main thing you need to use to adapt the react-router v6
- * API to what use-query-params expects.
- *
- * Pass this as the `ReactRouterRoute` prop to QueryParamProvider.
- */
-const RouteAdapter = ({ children }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const adaptedHistory = React.useMemo(
-    () => ({
-      replace(location) {
-        navigate(location, { replace: true, state: location.state });
-      },
-      push(location) {
-        navigate(location, { replace: false, state: location.state });
-      },
-    }),
-    [navigate]
-  );
-  return children({ history: adaptedHistory, location });
-};
-
-
 /* Pages routing by language */
 const LangRoutes = ({ location }) => {
 
@@ -145,7 +121,7 @@ const AppRoutes = ({ enableGA=false }) => {
   return (
     <React.Fragment>
       <GA enabled={enableGA} />
-      <QueryParamProvider ReactRouterRoute={RouteAdapter}>
+      <QueryParamProvider adapter={ReactRouter6Adapter}>
 
         {transitions(({ opacity }, location) =>
           <animated.div style={{ opacity }} className="h-100 w-100 position-absolute">
