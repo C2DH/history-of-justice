@@ -6,7 +6,6 @@ import {
   Routes,
   Route,
   useLocation,
-  useNavigate,
   Navigate
 } from "react-router-dom";
 import { useTransition, animated } from 'react-spring';
@@ -38,8 +37,7 @@ const CrimesAndTrials = lazy(() => import('./pages/CrimesAndTrials'));
 const Crime = lazy(() => import('./pages/Crime'));
 const Collection = lazy(() => import('./pages/Collection'));
 const Media = lazy(() => import('./pages/Media'));
-const About = lazy(() => import('./pages/About'));
-const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
+const StaticPage = lazy(() => import('./pages/StaticPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 
@@ -86,8 +84,8 @@ const LangRoutes = ({ location }) => {
           </Route>
           <Route path={CollectionRoute.to} element={<Collection />} />
           <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
-          <Route path={AboutRoute.to} element={<About />} />
-          <Route path={TermsOfUseRoute.to} element={<TermsOfUse />} />
+          <Route path={AboutRoute.to} element={<StaticPage pageId={AboutRoute.id} />} />
+          <Route path={TermsOfUseRoute.to} element={<StaticPage pageId={TermsOfUseRoute.id} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 

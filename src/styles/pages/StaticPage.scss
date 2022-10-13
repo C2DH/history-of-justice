@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.StaticPage {
+  font-size: 1.5rem;
+
+  @include media-breakpoint-down(md) {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  h1 {
+    margin: 3rem 0;
+  }
+
+  h2, h3, h4 {
+    font-weight: bold;
+  }
+
+  h4 {
+    text-transform: uppercase;
+  }
+}

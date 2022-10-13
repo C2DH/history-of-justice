@@ -20,9 +20,16 @@ export const CollectionRoute = {
   type:   'search'
 }
 export const MediaRoute = { to: 'collection/media', label: 'navigation.media' }
-export const AboutRoute = { to: 'about', label: 'navigation.about' }
-
-export const TermsOfUseRoute = { to:'terms-of-use', label: 'navigation.terms-of-use'}
+export const AboutRoute = { 
+  to:     'about', 
+  label:  'navigation.about',
+  id:     'about' 
+}
+export const TermsOfUseRoute = { 
+  to:     'terms-of-use', 
+  label:  'navigation.terms-of-use',
+  id:     'terms-of-use'
+}
 
 export const PrimaryRoutes = [
   HistoryOfJusticeSystemRoute,

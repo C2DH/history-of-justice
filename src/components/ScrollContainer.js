@@ -15,7 +15,7 @@ const ScrollContainer = ({ as :Component = 'div', children, ...props }) => {
   const scrollEl = useRef();
 
   return (
-    <Component ref={scrollEl} {...props} style={{ overflowY: 'auto' }}>
+    <Component ref={scrollEl} {...props} style={{ overflowY: 'auto', height: '100%' }}>
       <ScrollElContext.Provider value={{ scrollEl: scrollEl.current }}>
         {children}
       </ScrollElContext.Provider>
