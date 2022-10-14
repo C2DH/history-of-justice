@@ -41,6 +41,8 @@ const CollectionGrid = ({ items, canLoadMore=false, loadMore }) => {
       loadMore()
   }
 
+  if(!scrollEl) return null;
+
   return (
     <WindowScroller scrollElement={scrollEl}>
       {({ height, isScrolling, registerChild, scrollTop }) => (

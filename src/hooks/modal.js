@@ -10,6 +10,7 @@ export const LinkModal = ({
 }) => {
 
   const location = useLocation();
+  location.state = { ...location.state, isBackground: useBackground};
 
   return (
     <Link {...props} state={{ ...state, modalLocation: location, useBackground: useBackground }}>
@@ -28,6 +29,7 @@ export const useModal = () => {
     backgroundLocation: state?.useBackground ? state?.modalLocation : undefined,
     exitLink: state?.modalLocation,
     isModal: !!state?.modalLocation,
+    isBackground: !!state?.isBackground,
     navigate: to => navigate(to, { state }),
     state
   }

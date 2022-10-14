@@ -88,13 +88,15 @@ const LangRoutes = ({ location }) => {
           <Route path={TermsOfUseRoute.to} element={<StaticPage pageId={TermsOfUseRoute.id} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+      </Suspense>
 
-        {backgroundLocation &&
+      {backgroundLocation &&
+        <Suspense fallback={<AppRouteLoading/>}>
           <Routes>
             <Route path={`${MediaRoute.to}/:mediaSlug`} element={<Media />} />
           </Routes>
-        }
-      </Suspense>
+        </Suspense>
+      }
     </Layout>
   );
 }
