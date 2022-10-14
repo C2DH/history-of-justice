@@ -19,7 +19,12 @@ const GroupHeaderCard = ({
     >
       <div>{group.data.title}</div>
       {group.data.role &&
-        <div className="role">{group.data.role} ({group.data.year})</div>
+        <div className="role">
+          {group.data.role} 
+          {group.data.year && 
+            <span> ({group.data.year})</span>
+          }
+        </div>
       }
     </div>
   );

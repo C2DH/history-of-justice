@@ -33,7 +33,12 @@ const SpeakerSlider = ({
     key: speaker.slug,
     content: <div className="speaker">
                 <div>{speaker.data.title}</div>
-                <div className="role">{speaker.data.role} ({speaker.data.year})</div>
+                <div className="role">
+                  {speaker.data.role}
+                  {speaker.data.year && 
+                    <span> ({speaker.data.year})</span>
+                  }
+                </div>
             </div>
   })), [speakers]);
 
