@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQueryParam, StringParam } from 'use-query-params';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useMedias, useMediaFacets } from '../hooks/miller';
 import { useModal } from '../hooks/modal';
