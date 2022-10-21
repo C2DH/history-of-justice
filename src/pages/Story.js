@@ -22,7 +22,7 @@ const Story = () => {
   return (
     <div>
       {theme &&
-        <Helmet titleTemplate={`%s - ${t(HistoryOfJusticeSystemRoute.label)} - ${t('site.name')}`}>
+        <Helmet titleTemplate="%s | HistJust.lu">
           <title>{theme.data.title}</title>
           <meta name="description" content={description}></meta>
           <meta property="og:title" content={theme.data.title} />

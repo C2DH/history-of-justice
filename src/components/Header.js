@@ -26,8 +26,10 @@ const Header = () => {
 
   return (
     <header>
-      <Helmet titleTemplate={`%s  - ${t('site.name')}`}>
-        <title>{t(activeRoute.label)}</title>
+      <Helmet titleTemplate={`%s | ${t('site.name')}`} defaultTitle={t('site.name')}>
+        {activeRoute !== HomeRoute &&
+          <title>{t(activeRoute.label)}</title>
+        }
         <meta property="og:title" content={t(activeRoute.label)} />
         <meta property="og:site_name" content={t('site.name')} />
         <meta property="og:locale" content={i18n.language.replace('-', '_')} />

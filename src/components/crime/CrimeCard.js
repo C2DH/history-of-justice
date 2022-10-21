@@ -47,7 +47,7 @@ const CrimeCard = ({
         <>
           <h3 className="outside">{crime.data.title}</h3>
 
-          <Helmet titleTemplate={`%s - ${t(CrimesAndTrialsRoute.label)} - ${t('site.name')}`}>
+          <Helmet titleTemplate={`%s | ${t('site.name')}`}>
             <title>{crime.data.title}</title>
             <meta property="og:title" content={crime.data.title} />
           </Helmet>

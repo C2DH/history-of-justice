@@ -87,14 +87,14 @@ const InterviewHelmet = ({ interview }) => {
   const { t }       = useTranslation();
 
   if(!interview) return null;
-  
+
   const description = t('page.interview.description', { 
     speaker: interview.speaker.data.title,
     topic: interview.topic.data.title 
   });
   
   return (
-    <Helmet titleTemplate={`%s - ${t(MagistrateJobRoute.label)} - ${t('site.name')}`}>
+    <Helmet titleTemplate="%s | HistJust.lu">
       <title>{interview.data.title}</title>
       <meta name="description" content={description}></meta>
       <meta property="og:title" content={interview.data.title} />
@@ -106,7 +106,7 @@ const InterviewHelmet = ({ interview }) => {
         {
           "@context": "https://schema.org",
           "@type": "VideoObject",
-          "name": "${interview.data.title} - ${t('site.name')}",
+          "name": "${interview.data.title} | HistJust.lu",
           "description": "${description}",
           "thumbnailUrl": "${interview.data.resolutions?.thumbnail.url}",
           "uploadDate": "2022-10-22",

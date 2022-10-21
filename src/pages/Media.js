@@ -88,7 +88,7 @@ const Media = () => {
       </Row>
 
       {media &&
-        <Helmet titleTemplate={`%s  - ${t('site.name')}`}>      
+        <Helmet titleTemplate="%s | HistJust.lu">      
           <title>{media.data.title}</title>
           <meta name="description" content="" />
           <meta name="keywords" content={media.data.type} />

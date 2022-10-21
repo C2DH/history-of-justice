@@ -74,7 +74,7 @@ export const MillerAPI = process.env.REACT_APP_MILLER_API ?? '/api';
 export const CrimesThemeId = process.env.REACT_APP_CRIMES_THEME_ID ?? 'crimes';
 
 export const TRUNCATE_DESCRIPTION_OPTIONS = {
-  length: 400,
+  length: 200,
   omission: '.',
   separator: '.'
 }
