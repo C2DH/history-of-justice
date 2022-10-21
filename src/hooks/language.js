@@ -2,8 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import i18n from 'i18next'
 import moment from 'moment'
 import intersection from 'lodash/intersection';
+import { Helmet } from 'react-helmet-async';
 import { initReactI18next, useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
+
 import translations from '../translations'
 import {
   Languages,
@@ -106,6 +108,10 @@ const WithLanguage = ({ children }) => {
 
   return (
     <LanguageContext.Provider value={{ lang, mlPaths }}>
+      <Helmet>
+        <html lang={lang} />
+      </Helmet>
+
       {children}
     </LanguageContext.Provider>
   );

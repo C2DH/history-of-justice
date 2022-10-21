@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useStory } from '@c2dh/react-miller';
 import { useSpringCarousel } from 'react-spring-carousel';
+import { Helmet } from 'react-helmet-async';
+import { truncate, findIndex } from 'lodash';
 
 import CrimeModule from './CrimeModule';
+import { TRUNCATE_DESCRIPTION_OPTIONS } from '../../constants';
 
 import { ReactComponent as LeftIcon } from '../../images/icons/left.svg';
 import { ReactComponent as RightIcon } from '../../images/icons/right.svg';
@@ -14,7 +17,6 @@ const DRAG_MIN_DISTANCE           = 50;
 const ON_SLIDE_START_CHANGE_EVENT = 'onSlideStartChange';
 const ON_DRAG_EVENT               = 'onDrag';
 
-
 const CrimeContent = ({
   crimeId,
   onSlideAfterEnd = () => {},
@@ -22,7 +24,9 @@ const CrimeContent = ({
 }) => {
 
   const [ activeSlide, setActiveSlide ] = useState(0);
-  const [ crime ] = useStory(crimeId);
+  const [ crime ]                       = useStory(crimeId);
+  const firstImageIndex                 = findIndex(crime?.contents?.modules, ['module', 'object']);
+
   const {
     carouselFragment,
     slideToPrevItem,
@@ -31,12 +35,17 @@ const CrimeContent = ({
   } = useSpringCarousel({
     items: (crime?.contents?.modules.map((module, i) => ({
       id: i,
-      renderItem: <CrimeModule module={module} documents={crime.documents} />
+      renderItem: <CrimeModule 
+                    module    = {module} 
+                    documents = {crime.documents}
+                    meta      = {i === firstImageIndex} 
+                  />
     })) || [{}])
   })
 
-  const left_clickHandler = () => activeSlide === 0 ? onSlideBeforeStart() : slideToPrevItem();
-  const right_clickHandler = () => activeSlide >= crime.data.count_modules - 1 ? onSlideAfterEnd() : slideToNextItem();
+  const left_clickHandler   = () => activeSlide === 0 ? onSlideBeforeStart() : slideToPrevItem();
+  const right_clickHandler  = () => activeSlide >= crime.data.count_modules - 1 ? onSlideAfterEnd() : slideToNextItem();
+  const description         = truncate(crime?.contents?.modules[0]?.text?.content, TRUNCATE_DESCRIPTION_OPTIONS);
 
   useListenToCustomEvent(({
     eventName,
@@ -70,6 +79,11 @@ const CrimeContent = ({
           <div className={`tile ${activeSlide === i ? 'active' : ''}`} key={i.toString()} />
         )}
       </div>
+
+      <Helmet>
+        <meta name="description" content={description}></meta>
+        <meta property="og:description" content={description} />
+      </Helmet>
     </div>
   );
 }

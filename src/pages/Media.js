@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import { useDocument } from '@c2dh/react-miller';
+import { Helmet } from 'react-helmet-async';
 
 import { useModal } from '../hooks/modal';
 import { ImageViewer, PDFViewer } from '../components/viewer';
@@ -85,6 +86,18 @@ const Media = () => {
           </div>
         </Col>
       </Row>
+
+      {media &&
+        <Helmet titleTemplate={`%s  - ${t('site.name')}`}>      
+          <title>{media.data.title}</title>
+          <meta name="description" content="" />
+          <meta name="keywords" content={media.data.type} />
+          <meta property="og:title" content={media.data.title} />
+          <meta property="og:image" content={media.data.resolutions?.preview.url} />
+          <meta property="og:type" content="article" />
+          <meta property="og:description" content="" />
+        </Helmet>
+      }
     </Container>
   )
 }

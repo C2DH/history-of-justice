@@ -1,9 +1,11 @@
 {
   "en-GB": {
     "translation": {
+      "site.name": "History of Justice in Luxembourg",
+
       "asNumber": "{{ n,2 }}",
       "doc.type": "type",
-      "navigation.home": "home",
+      "navigation.home": "Home",
       "navigation.history-of-justice-system": "History of the Justice System",
       "navigation.magistrate-job": "The magistrate's job",
       "navigation.crimes-and-trials": "Crimes and trials",
@@ -25,6 +27,8 @@
       "pagesHomeSubheading": "",
       "pages.notFound.title": "Oops...",
       "pages.notFound.subheading": "This page doesn't exist.",
+
+      "page.interview.description": "Interview of {{ speaker }} about '{{ topic }}'",
 
       "all": "All",
       "archive document": "Archive document",
@@ -64,9 +68,11 @@
   },
   "fr-FR": {
     "translation": {
+      "site.name": "Histoire de la Justice au Luxembourg",
+
       "asNumber": "{{ n,2 }}",
       "doc.type": "type",
-      "navigation.home": "accueil",
+      "navigation.home": "Accueil",
       "navigation.history-of-justice-system": "L'histoire de l'organisation judiciaire",
       "navigation.magistrate-job": "Le travail du magistrat",
       "navigation.crimes-and-trials": "Punir le crime",
@@ -89,6 +95,8 @@
       "pages.notFound.title": "Oops...",
       "pagesNotFoundTitle": "Not Found",
       "pages.notFound.subheading": "Cette page n'existe pas.",
+
+      "page.interview.description": "Interview de {{ speaker }} sur le thème '{{ topic }}'",
 
       "all": "Tout",
       "archive document": "Document d'archive",

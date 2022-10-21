@@ -1,8 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
-import { LinkModal } from '../../hooks/modal';
 import CrimeContent from './CrimeContent';
+import { LinkModal } from '../../hooks/modal';
+import { CrimesAndTrialsRoute } from '../../constants';
 
 import '../../styles/components/crime/CrimeCard.scss';
 
@@ -24,13 +26,13 @@ const CrimeCard = ({
 
         <div className="year">{crime.data.abstract}</div>
         {!open &&
-          <React.Fragment>
+          <>
             <h3>{crime.data.title}</h3>
 
             <LinkModal to={crime.slug} className="explore-button">
               {t('explore')}
             </LinkModal>
-          </React.Fragment>
+          </>
         }
 
         {open &&
@@ -42,7 +44,14 @@ const CrimeCard = ({
         }
       </div>
       {open &&
-        <h3 className="outside">{crime.data.title}</h3>
+        <>
+          <h3 className="outside">{crime.data.title}</h3>
+
+          <Helmet titleTemplate={`%s - ${t(CrimesAndTrialsRoute.label)} - ${t('site.name')}`}>
+            <title>{crime.data.title}</title>
+            <meta property="og:title" content={crime.data.title} />
+          </Helmet>
+        </>
       }
     </div>
   );

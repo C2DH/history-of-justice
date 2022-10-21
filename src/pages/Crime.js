@@ -24,7 +24,7 @@ const Crime = () => {
 
   useEffect(() => {
     //  setTmeout to fix an error that occurs at loading time of the page with the carousel
-    setTimeout(() => setActiveSlide(findIndex(crimes, ['slug', crimeSlug])));
+    setTimeout(() => setActiveSlide(findIndex(crimes, ['slug', crimeSlug])), 100);
   }, [crimeSlug, crimes])
 
 

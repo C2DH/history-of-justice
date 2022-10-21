@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 import {
   PrimaryRoutes,
@@ -19,12 +20,19 @@ import '../styles/components/Header.scss';
 const Header = () => {
 
   const activeRoute = useActiveRoute();
-  const { t }       = useTranslation();
+  const { t, i18n } = useTranslation();
   const count       = useMediasCount();
   const mode        = activeRoute === HomeRoute ? 'dark' : 'light';
 
   return (
     <header>
+      <Helmet titleTemplate={`%s  - ${t('site.name')}`}>
+        <title>{t(activeRoute.label)}</title>
+        <meta property="og:title" content={t(activeRoute.label)} />
+        <meta property="og:site_name" content={t('site.name')} />
+        <meta property="og:locale" content={i18n.language.replace('-', '_')} />
+      </Helmet>
+
       <Navbar
         className         = "Header px-3"
         fixed             = "top"
