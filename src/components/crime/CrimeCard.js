@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet-async';
 
 import CrimeContent from './CrimeContent';
 import { LinkModal } from '../../hooks/modal';
-import { CrimesAndTrialsRoute } from '../../constants';
 
 import '../../styles/components/crime/CrimeCard.scss';
 

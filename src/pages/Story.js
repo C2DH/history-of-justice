@@ -1,17 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
 import { find, truncate } from 'lodash';
 
 import { StoryChapter } from '../components/story';
 import { useThemes } from '../hooks/miller';
-import { HistoryOfJusticeSystemRoute, TRUNCATE_DESCRIPTION_OPTIONS } from '../constants';
+import { TRUNCATE_DESCRIPTION_OPTIONS } from '../constants';
 
 
 const Story = () => {
 
-  const { t }                 = useTranslation();
   const { storySlug: slug }   = useParams();
   const [ themes ]            = useThemes();
   const theme                 = find(themes, { slug });

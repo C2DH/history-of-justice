@@ -10,7 +10,6 @@ import debounce from 'debounce';
 import { TopicSlider, SpeakerSlider } from '../components/interview';
 import { useModal } from '../hooks/modal';
 import { useInterview, useInterviews } from '../hooks/miller';
-import { MagistrateJobRoute } from '../constants';
 
 import { ReactComponent as CloseIcon } from '../images/icons/close.svg';
 
