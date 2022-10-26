@@ -1,5 +1,5 @@
 import React, { lazy, useEffect, Suspense } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 import {
@@ -41,22 +41,13 @@ const StaticPage = lazy(() => import('./pages/StaticPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 
-const GA = ({ enabled = false }) => {
-
-  let location = useLocation();
-
-  useEffect(
-    () => {
-      const url = [location.pathname, location.search].join('')
-      if (enabled) {
-        console.info('ReactGA.pageview:', url)
-        ReactGA.pageview(url)
-      } else {
-        console.info('ReactGA.pageview disabled:', url)
-      }
-    },
-    [location, enabled]
-  )
+const GA = ({ gaCode }) => {
+  useEffect(() => {
+    if(gaCode) {
+      console.log('ReactGA.initialize');
+      ReactGA.initialize(gaCode);
+    }
+  }, [gaCode]);
 
   return null;
 }
@@ -102,7 +93,7 @@ const LangRoutes = ({ location }) => {
 }
 
 
-const AppRoutes = ({ enableGA=false }) => {
+const AppRoutes = () => {
 
   const { lang }                = useLanguage();
   const location                = useLocation();
@@ -120,7 +111,7 @@ const AppRoutes = ({ enableGA=false }) => {
 
   return (
     <React.Fragment>
-      <GA enabled={enableGA} />
+      <GA gaCode={process.env.REACT_APP_GA_CODE} />
       <QueryParamProvider adapter={ReactRouter6Adapter}>
 
         {transitions(({ opacity }, location) =>
