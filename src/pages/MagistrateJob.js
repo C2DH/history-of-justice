@@ -58,6 +58,11 @@ const MagistrateJob = () => {
                 </React.Fragment>
               )}
 
+              {/* 5 empty cards to not have big cards on the last line. Due to the use of flex-grow style */
+              [...Array(5)].map((_, i) =>
+                <GroupHeaderCard key={i.toString()} />
+              )}
+
             </div>
           </Col>
         </Row>

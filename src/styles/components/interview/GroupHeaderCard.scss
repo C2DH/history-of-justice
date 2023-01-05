@@ -10,7 +10,7 @@
     color: var(--bs-gray-500);
   }
 
-  &::after {
+  &:not(.empty)::after {
     content: '';
     position: absolute;
     left: 0;

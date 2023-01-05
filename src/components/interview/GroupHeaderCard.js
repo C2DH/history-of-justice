@@ -8,17 +8,17 @@ const GroupHeaderCard = ({
   onActiveGroup
  }) => {
 
-  const mouseEnterHandler = () => onActiveGroup(group);
-  const mouseLeaveHandler = () => onActiveGroup();
+  const mouseEnterHandler = () => onActiveGroup && onActiveGroup(group);
+  const mouseLeaveHandler = () => onActiveGroup && onActiveGroup();
 
   return (
     <div
-      className     = "GroupHeaderCard"
+      className     = {`GroupHeaderCard ${!group ? 'empty' : ''}`}
       onMouseEnter  = {mouseEnterHandler}
       onMouseLeave  = {mouseLeaveHandler}
     >
-      <div>{group.data.title}</div>
-      {group.data.role &&
+      <div>{group?.data.title}</div>
+      {group?.data.role &&
         <div className="role">
           {group.data.role} 
           {group.data.year && 
